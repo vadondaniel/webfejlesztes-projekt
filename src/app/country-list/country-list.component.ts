@@ -1,16 +1,24 @@
-import { Component } from '@angular/core';
-import { Country } from '../models'; // Adjusted path
+import { Component, OnInit } from '@angular/core';
+import { CountryService } from '../services/country.service'; // Adjust the path
+import { Country } from '../models';
 
 @Component({
   selector: 'app-country-list',
   templateUrl: './country-list.component.html',
   styleUrls: ['./country-list.component.css']
 })
-export class CountryListComponent {
-  countries: Country[];
+export class CountryListComponent implements OnInit {
+  countries: Country[] | undefined;
 
-  constructor() {
-    // Initialize countries here or fetch them from a service
-    this.countries = [];
+  constructor(private countryService: CountryService) {}
+
+  ngOnInit() {
+    this.loadCountries();
+  }
+
+  loadCountries() {
+    this.countryService.getCountries().subscribe(data => {
+      this.countries = data;
+    });
   }
 }

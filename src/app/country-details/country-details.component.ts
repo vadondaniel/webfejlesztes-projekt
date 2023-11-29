@@ -1,16 +1,28 @@
-import { Component } from '@angular/core';
-import { Country } from '../models'; // Import Country class
+import { Component, OnInit } from '@angular/core';
+import { CountryService } from '../services/country.service';
+import { Country } from '../models';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-country-details',
   templateUrl: './country-details.component.html',
   styleUrls: ['./country-details.component.css']
 })
-export class CountryDetailsComponent {
-  country: Country; // Declare country property
+export class CountryDetailsComponent implements OnInit {
+  country!: Country;
 
-  constructor() {
-    // Initialize country here or fetch it from a service
-    this.country = new Country();
+  constructor(private countryService: CountryService, private route: ActivatedRoute) {}
+
+  ngOnInit() {
+    this.route.params.subscribe(params => {
+      const countryId = +params['id'];
+      this.loadCountryDetails(countryId);
+    });
+  }
+
+  loadCountryDetails(countryId: number) {
+    this.countryService.getCountryById(countryId).subscribe(data => {
+      this.country = data;
+    });
   }
 }
