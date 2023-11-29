@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { City } from '../models'; // Adjusted path
+import { CityService } from '../services/city.service';
+import { City } from '../models';
 
 @Component({
   selector: 'app-city-list',
@@ -10,12 +10,14 @@ import { City } from '../models'; // Adjusted path
 export class CityListComponent {
   cities: City[] | undefined;
 
-  constructor(private http: HttpClient) {
-    this.fetchCities();
+  constructor(private cityService: CityService) {}
+
+  ngOnInit() {
+    this.loadCountries();
   }
 
-  fetchCities(): void {
-    this.http.get<City[]>('http://localhost:8080/api/cities').subscribe(data => {
+  loadCountries() {
+    this.cityService.getCities().subscribe(data => {
       this.cities = data;
     });
   }

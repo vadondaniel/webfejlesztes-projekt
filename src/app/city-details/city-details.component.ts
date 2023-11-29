@@ -1,16 +1,29 @@
-import { Component } from '@angular/core';
-import { City } from '../models'; // Import City class
+import { Component, OnInit } from '@angular/core';
+import { CityService } from '../services/city.service';
+import { City } from '../models';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-city-details',
   templateUrl: './city-details.component.html',
   styleUrls: ['./city-details.component.css']
 })
-export class CityDetailsComponent {
-  city: City; // Declare city property
+export class CityDetailsComponent implements OnInit{
+  city!: City;
 
-  constructor() {
-    // Initialize city here or fetch it from a service
-    this.city = new City();
+  constructor(private cityService: CityService, private route: ActivatedRoute) {}
+
+  ngOnInit() {
+    this.route.params.subscribe(params => {
+      const cityId = +params['id'];
+      this.loadCityDetails(cityId);
+    });
+  }
+
+  loadCityDetails(cityId: number) {
+    this.cityService.getCityById(cityId).subscribe(data => {
+      this.city = data;
+      console.log(data);
+    });
   }
 }

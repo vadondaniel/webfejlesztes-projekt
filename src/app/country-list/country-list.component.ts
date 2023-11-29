@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CountryService } from '../services/country.service'; // Adjust the path
+import { CountryService } from '../services/country.service';
 import { Country } from '../models';
 
 @Component({
