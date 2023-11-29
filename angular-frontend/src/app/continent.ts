@@ -1,5 +1,3 @@
-// continent.ts
-
 export enum Continent {
     Africa = "Africa",
     Antarctica = "Antarctica",
