@@ -1,0 +1,41 @@
+nav {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+nav.Add {
+    background-color: lightgray;
+}
+
+nav.List {
+    background-color: lightblue;
+}
+
+nav a {
+    margin: 0 10px;
+    text-decoration: none;
+    color: blue;
+    padding: 8px 16px;
+    border: 1px solid blue;
+    border-radius: 4px;
+    background-color: white;
+    transition: background-color 0.3s ease;
+}
+
+nav a:hover {
+    background-color: lightblue;
+}
+
+nav a.active {
+    color: red;
+    background-color: lightblue;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+router-outlet {
+    display: block;
+    margin-top: 20px;
+}
