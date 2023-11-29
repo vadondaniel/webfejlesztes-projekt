@@ -1,0 +1,24 @@
+h2 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #ff0000;
+    text-decoration: underline;
+}
+
+label {
+    font-weight: bold;
+    color: #0000ff;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    background-color: #f2f2f2;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+li {
+    margin-bottom: 10px;
+    color: #008000;
+}
