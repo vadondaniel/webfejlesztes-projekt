@@ -10,7 +10,9 @@
   </div>
   <div>
     <label for="continent">Continent:</label>
-    <input type="text" id="continent" formControlName="continent">
+    <select id="continent" formControlName="continent">
+      <option *ngFor="let option of continentOptions" [value]="option">{{ Continent[option] }}</option>
+    </select>
   </div>
   <button type="submit">Add Country</button>
 </form>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CountryService } from '../services/country.service';
+import { Continent } from '../continent';
 
 @Component({
   selector: 'app-add-country',
@@ -9,13 +10,16 @@ import { CountryService } from '../services/country.service';
 })
 export class AddCountryComponent implements OnInit {
 
+  Continent: any = Continent;
+
   countryForm: FormGroup;
+  continentOptions = Object.keys(Continent).filter(key => isNaN(Number(key)));
 
   constructor(private fb: FormBuilder, private countryService: CountryService) {
     this.countryForm = this.fb.group({
       name: ['', Validators.required],
       population: [0, Validators.required],
-      continent: ['', Validators.required]
+      continent: [null, Validators.required] // Initialize with null or default value
     });
   }
 
