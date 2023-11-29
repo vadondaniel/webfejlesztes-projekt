@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CityService } from '../services/city.service';
+import { CountryService } from '../services/country.service';
+import { Country } from '../models';
 
 @Component({
   selector: 'app-add-city',
@@ -10,8 +12,9 @@ import { CityService } from '../services/city.service';
 export class AddCityComponent implements OnInit {
 
   cityForm: FormGroup;
+  countries: Country[] = [];
 
-  constructor(private fb: FormBuilder, private cityService: CityService) {
+  constructor(private fb: FormBuilder, private cityService: CityService, private countryService: CountryService) {
     this.cityForm = this.fb.group({
       name: ['', Validators.required],
       population: [0, Validators.required],
@@ -20,6 +23,13 @@ export class AddCityComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.loadCountries();
+  }
+
+  loadCountries(): void {
+    this.countryService.getCountries().subscribe(data => {
+      this.countries = data;
+    });
   }
 
   onSubmit(): void {
