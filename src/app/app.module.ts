@@ -7,13 +7,15 @@ import { CountryListComponent } from './country-list/country-list.component';
 import { CityListComponent } from './city-list/city-list.component';
 import { CountryDetailsComponent } from './country-details/country-details.component';
 import { CityDetailsComponent } from './city-details/city-details.component';
+import { AppComponent } from './app.component';
 
 @NgModule({
     declarations: [
         CountryListComponent,
         CityListComponent,
         CountryDetailsComponent,
-        CityDetailsComponent
+        CityDetailsComponent,
+        AppComponent
     ],
     imports: [
         BrowserModule,
@@ -22,5 +24,6 @@ import { CityDetailsComponent } from './city-details/city-details.component';
         FormsModule
     ],
     providers: [],
+    bootstrap: [AppComponent] // AppComponent is the root component
 })
 export class AppModule { }
