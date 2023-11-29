@@ -1,7 +1,28 @@
-<h2>{{ country.name }} Details</h2>
+<!-- <h2>{{ country.name }} Details</h2>
 <div>
   <label>Name: </label>
   <input [(ngModel)]="country.name" placeholder="Country name" />
+</div>
+<h3>Cities:</h3>
+<ul>
+  <li *ngFor="let city of country.cities">
+    {{ city.name }} - Population: {{ city.population }}
+  </li>
+</ul> -->
+
+<!-- country-details.component.html -->
+<h2>{{ country.name }} Details</h2>
+<div>
+  <label>ID: </label>{{ country.id }}
+</div>
+<div>
+  <label>Name: </label>{{ country.name }}
+</div>
+<div>
+  <label>Population: </label>{{ country.population }}
+</div>
+<div>
+  <label>Continent: </label>{{ country.continent }}
 </div>
 <h3>Cities:</h3>
 <ul>

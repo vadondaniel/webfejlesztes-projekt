@@ -9,6 +9,7 @@ import { CountryDetailsComponent } from './country-details/country-details.compo
 import { CityDetailsComponent } from './city-details/city-details.component';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app.routes'; // Import AppRoutingModule
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
     declarations: [
@@ -23,7 +24,8 @@ import { AppRoutingModule } from './app.routes'; // Import AppRoutingModule
         RouterModule,
         CommonModule,
         FormsModule,
-        AppRoutingModule
+        AppRoutingModule,
+        HttpClientModule
     ],
     providers: [],
     bootstrap: [AppComponent] // AppComponent is the root component

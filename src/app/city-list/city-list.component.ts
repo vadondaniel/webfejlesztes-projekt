@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { City } from '../models'; // Adjusted path
 
 @Component({
@@ -7,10 +8,15 @@ import { City } from '../models'; // Adjusted path
   styleUrls: ['./city-list.component.css']
 })
 export class CityListComponent {
-  cities: City[];
+  cities: City[] | undefined;
 
-  constructor() {
-    // Initialize countries here or fetch them from a service
-    this.cities = [];
+  constructor(private http: HttpClient) {
+    this.fetchCities();
+  }
+
+  fetchCities(): void {
+    this.http.get<City[]>('http://localhost:8080/api/cities').subscribe(data => {
+      this.cities = data;
+    });
   }
 }
