@@ -8,8 +8,11 @@ import { CityListComponent } from './city-list/city-list.component';
 import { CountryDetailsComponent } from './country-details/country-details.component';
 import { CityDetailsComponent } from './city-details/city-details.component';
 import { AppComponent } from './app.component';
-import { AppRoutingModule } from './app.routes'; // Import AppRoutingModule
+import { AppRoutingModule } from './app.routes';
 import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
+import { AddCountryComponent } from './add-country/add-country.component';
+import { AddCityComponent } from './add-city/add-city.component';
 
 @NgModule({
     declarations: [
@@ -17,7 +20,9 @@ import { HttpClientModule } from '@angular/common/http';
         CityListComponent,
         CountryDetailsComponent,
         CityDetailsComponent,
-        AppComponent
+        AppComponent,
+        AddCountryComponent,
+        AddCityComponent
     ],
     imports: [
         BrowserModule,
@@ -25,9 +30,10 @@ import { HttpClientModule } from '@angular/common/http';
         CommonModule,
         FormsModule,
         AppRoutingModule,
-        HttpClientModule
+        HttpClientModule,
+        ReactiveFormsModule
     ],
     providers: [],
-    bootstrap: [AppComponent] // AppComponent is the root component
+    bootstrap: [AppComponent]
 })
 export class AppModule { }
