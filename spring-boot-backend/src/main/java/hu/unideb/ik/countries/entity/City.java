@@ -1,5 +1,6 @@
 package hu.unideb.ik.countries.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 @Entity
@@ -49,6 +50,7 @@ public class City {
     // Many-to-One relationship with Country entity
     @ManyToOne
     @JoinColumn(name = "country_id", insertable = false, updatable = false)
+    @JsonIgnore
     private hu.unideb.ik.countries.entity.Country country;
 
     public hu.unideb.ik.countries.entity.Country getCountry() {
