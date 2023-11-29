@@ -8,6 +8,7 @@ import { CityListComponent } from './city-list/city-list.component';
 import { CountryDetailsComponent } from './country-details/country-details.component';
 import { CityDetailsComponent } from './city-details/city-details.component';
 import { AppComponent } from './app.component';
+import { AppRoutingModule } from './app.routes'; // Import AppRoutingModule
 
 @NgModule({
     declarations: [
@@ -21,7 +22,8 @@ import { AppComponent } from './app.component';
         BrowserModule,
         RouterModule,
         CommonModule,
-        FormsModule
+        FormsModule,
+        AppRoutingModule
     ],
     providers: [],
     bootstrap: [AppComponent] // AppComponent is the root component
