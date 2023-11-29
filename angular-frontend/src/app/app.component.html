@@ -1,9 +1,15 @@
 <nav class="Add">
-    <a routerLink="/add-country">Add Country</a>
-    <a routerLink="/add-city">Add City</a>
-</nav>
-<nav class="List">
-    <a routerLink="/countries">Countries List</a>
-    <a routerLink="/cities">Cities List</a>
-</nav>
-<router-outlet></router-outlet>
+    <mat-select placeholder="Add" class="dropdown-menu">
+      <mat-option routerLink="/add-country">Add Country</mat-option>
+      <mat-option routerLink="/add-city">Add City</mat-option>
+    </mat-select>
+  </nav>
+  
+  <nav class="List">
+    <mat-select placeholder="List" class="dropdown-menu">
+      <mat-option routerLink="/countries">Countries List</mat-option>
+      <mat-option routerLink="/cities">Cities List</mat-option>
+    </mat-select>
+  </nav>
+  
+  <router-outlet></router-outlet>
