@@ -4,61 +4,46 @@
 html,
 body {
     height: 100%;
-    margin-left: 5%;
-    margin-right: 20%;
 }
 
 body {
     margin: 0;
     font-family: Roboto, "Helvetica Neue", sans-serif;
-    background-color: #121212;
-    color: #e0e0e0;
+    background-color: #303030; /* dark grey */
+    color: #e8eaf6; /* light purple */
 }
 
 h2 {
     font-size: 24px;
     font-weight: bold;
-    color: #333;
+    color: #7e57c2; /* deep purple */
     text-transform: uppercase;
-}
-
-ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-}
-
-li {
-    margin-bottom: 10px;
-    background-color: #f2f2f2;
-    padding: 10px;
-    border-radius: 5px;
 }
 
 a {
     text-decoration: none;
-    color: blue;
+    color: #7e57c2; /* deep purple */
     transition: color 0.4s ease-in-out;
 }
 
 a:hover {
     text-decoration: underline;
-    color: lightseagreen;
+    color: #66bb6a; /* light green */
 }
 
 table {
     width: 100%;
     border-collapse: collapse;
-    background-color: #333;
+    background-color: #303030; /* dark grey */
 }
 
 th, td {
     padding: 8px;
     text-align: left;
     border-bottom: 1px solid #ddd;
-    color: #e0e0e0;
+    color: #e8eaf6; /* light purple */
 }
 
 tr:hover {
-    background-color: #424242;
+    background-color: #424242; /* darker grey */
 }
