@@ -16,5 +16,35 @@
       <td>{{ country.continent }}</td>
       <td>{{ country.cities.length }}</td>
     </tr>
+    <tr *ngIf="sortedCountries.length === 0">
+      <td colspan="5">No countries found</td>
+    </tr>
   </tbody>
 </table>
+
+<mat-card class="country-form-card">
+  <form [formGroup]="countryForm" (ngSubmit)="onSubmit()" class="country-form">
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Name</mat-label>
+      <input matInput type="text" formControlName="name">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Population</mat-label>
+      <input matInput type="number" formControlName="population">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Continent</mat-label>
+      <mat-select formControlName="continent">
+        <mat-option *ngFor="let option of continentOptions" [value]="option">
+          {{ Continent[option] }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" type="submit">
+      Add Country
+    </button>
+  </form>
+</mat-card>
