@@ -18,15 +18,25 @@ export class NavigationComponent {
       shareReplay()
     );
 
-    constructor(private router: Router) { }
+  constructor(private router: Router) { }
 
-    getNavigationText(): string {
-      if (this.router.url.includes('countries')) {
-        return 'Countries';
-      } else if (this.router.url.includes('cities')) {
-        return 'Cities';
-      } else {
-        return 'Home';
-      }
+  getNavigationText(): string {
+    if (this.router.url.startsWith('/countries/') && this.router.url.split('/').length > 2) {
+      return 'Country Details';
+    } else if (this.router.url.startsWith('/cities/') && this.router.url.split('/').length > 2) {
+      return 'City Details';
+    } else if (this.router.url.includes('countries')) {
+      return 'Countries';
+    } else if (this.router.url.includes('cities')) {
+      return 'Cities';
+    } else if (this.router.url.includes('add-country')) {
+      return 'Add Country';
+    } else if (this.router.url.includes('add-city')) {
+      return 'Add City';
+    } else if (this.router.url.includes('country-table')) {
+      return 'Country Table';
+    } else {
+      return 'Home';
     }
+  }
 }
