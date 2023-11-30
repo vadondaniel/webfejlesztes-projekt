@@ -5,16 +5,16 @@
       <th>Name</th>
       <th>Population</th>
       <th>Continent</th>
-      <th>Cities</th>
+      <th>Number of Cities</th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let country of countries">
       <td>{{ country.id }}</td>
-      <td>{{ country.name }}</td>
+      <td><a [routerLink]="['/countries', country.id]">{{ country.name }}</a></td>
       <td>{{ country.population }}</td>
       <td>{{ country.continent }}</td>
-      <td><a [routerLink]="['/countries', country.id]">View Cities</a></td>
+      <td>{{ country.cities.length }}</td>
     </tr>
   </tbody>
 </table>
