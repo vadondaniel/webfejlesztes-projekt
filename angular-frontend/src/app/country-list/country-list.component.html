@@ -1,15 +1,15 @@
-<table>
+<table matSort (matSortChange)="sortData($event)">
   <thead>
     <tr>
-      <th>ID</th>
-      <th>Name</th>
-      <th>Population</th>
-      <th>Continent</th>
-      <th>Number of Cities</th>
+      <th mat-sort-header="id">ID</th>
+      <th mat-sort-header="name">Name</th>
+      <th mat-sort-header="population">Population</th>
+      <th mat-sort-header="continent">Continent</th>
+      <th mat-sort-header="cities">Number of Cities</th>
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let country of countries">
+    <tr *ngFor="let country of sortedCountries">
       <td>{{ country.id }}</td>
       <td><a [routerLink]="['/countries', country.id]">{{ country.name }}</a></td>
       <td>{{ country.population }}</td>
