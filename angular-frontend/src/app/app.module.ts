@@ -6,8 +6,6 @@ import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app.routes';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
-import { MatSelectModule } from '@angular/material/select';
-import { MatOptionModule } from '@angular/material/core';
 import { CountryListComponent } from './country-list/country-list.component';
 import { CityListComponent } from './city-list/city-list.component';
 import { CountryDetailsComponent } from './country-details/country-details.component';
@@ -45,8 +43,6 @@ import { MatListModule } from '@angular/material/list';
         AppRoutingModule,
         HttpClientModule,
         ReactiveFormsModule,
-        MatSelectModule,
-        MatOptionModule,
         BrowserAnimationsModule,
         MatTableModule,
         MatPaginatorModule,
