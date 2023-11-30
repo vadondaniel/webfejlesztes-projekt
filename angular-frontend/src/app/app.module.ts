@@ -16,6 +16,16 @@ import { AppComponent } from './app.component';
 import { AddCountryComponent } from './add-country/add-country.component';
 import { AddCityComponent } from './add-city/add-city.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CountryTableComponent } from './country-table/country-table.component';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+import { NavigationComponent } from './navigation/navigation.component';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatIconModule } from '@angular/material/icon';
+import { MatListModule } from '@angular/material/list';
 
 @NgModule({
     declarations: [
@@ -25,7 +35,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
         CityDetailsComponent,
         AppComponent,
         AddCountryComponent,
-        AddCityComponent
+        AddCityComponent,
+        CountryTableComponent,
+        NavigationComponent
     ],
     imports: [
         BrowserModule,
@@ -37,7 +49,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
         ReactiveFormsModule,
         MatSelectModule,
         MatOptionModule,
-        BrowserAnimationsModule
+        BrowserAnimationsModule,
+        MatTableModule,
+        MatPaginatorModule,
+        MatSortModule,
+        MatToolbarModule,
+        MatButtonModule,
+        MatSidenavModule,
+        MatIconModule,
+        MatListModule
     ],
     providers: [],
     bootstrap: [AppComponent]
