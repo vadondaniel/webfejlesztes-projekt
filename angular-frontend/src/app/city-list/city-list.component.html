@@ -14,6 +14,9 @@
       <td>{{ city.population }}</td>
       <td>{{ city.countryId }}</td>
     </tr>
+    <tr *ngIf="sortedCities.length === 0">
+      <td colspan="5">No cities found</td>
+    </tr>
   </tbody>
 </table>
 

@@ -27,6 +27,9 @@
         <td><a [routerLink]="['/cities', city.id]">{{ city.name }}</a></td>
         <td>{{ city.population }}</td>
       </tr>
+      <tr *ngIf="sortedCities.length === 0">
+        <td colspan="5">No cities found</td>
+      </tr>
     </tbody>
   </table>
 </div>
