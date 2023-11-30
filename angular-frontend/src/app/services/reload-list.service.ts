@@ -13,4 +13,12 @@ export class ReloadListService {
   loadCountries() {
     this.triggerLoadCountries.next();
   }
+
+  private triggerLoadCities = new Subject<void>();
+
+  triggerLoadCities$ = this.triggerLoadCities.asObservable();
+
+  loadCities() {
+    this.triggerLoadCities.next();
+  }
 }
