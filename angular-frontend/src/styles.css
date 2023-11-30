@@ -43,6 +43,10 @@ th, td {
     border-bottom: 1px solid #ddd;
     color: #e8eaf6; /* light purple */
 }
+th {
+    background-color: #424242; /* darker grey */
+    color: #e8eaf6; /* light purple */
+}
 
 tr:hover {
     background-color: #424242; /* darker grey */
