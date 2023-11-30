@@ -1,40 +1,25 @@
-h2 {
-  font-size: 24px;
-  margin-bottom: 20px;
-  color: #90caf9;
-}
-
-form {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  background-color: #333;
-  color: #e0e0e0;
-}
-
 label {
   font-weight: bold;
   margin-bottom: 10px;
-  color: #64b5f6;
+  color: #7e57c2; /* deep purple */
 }
 
-input,
-select {
+input, select {
   padding: 5px;
   margin-bottom: 10px;
-  background-color: #424242;
-  color: #e0e0e0;
+  background-color: #303030; /* dark grey */
+  color: #e8eaf6; /* light purple */
   border: 1px solid #ddd;
 }
 
 button {
   padding: 10px 20px;
-  background-color: #007bff;
+  background-color: #7e57c2; /* deep purple */
   color: #fff;
   border: none;
   cursor: pointer;
 }
 
 button:hover {
-  background-color: #0056b3;
+  background-color: #66bb6a; /* light green */
 }
