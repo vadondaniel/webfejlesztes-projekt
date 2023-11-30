@@ -4,3 +4,12 @@ h2 {
     color: #333;
     text-transform: uppercase;
 }
+
+a {
+    text-decoration: none;
+    color: #333;
+}
+
+a:hover {
+    text-decoration: underline;
+}
