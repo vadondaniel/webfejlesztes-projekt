@@ -13,16 +13,16 @@
   </div>
 
   <h2>Cities</h2>
-  <table>
+  <table matSort (matSortChange)="sortData($event)">
     <thead>
       <tr>
-        <th>ID</th>
-        <th>Name</th>
-        <th>Population</th>
+        <th mat-sort-header="id">ID</th>
+        <th mat-sort-header="name">Name</th>
+        <th mat-sort-header="population">Population</th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let city of country.cities">
+      <tr *ngFor="let city of sortedCities">
         <td>{{ city.id }}</td>
         <td><a [routerLink]="['/cities', city.id]">{{ city.name }}</a></td>
         <td>{{ city.population }}</td>
