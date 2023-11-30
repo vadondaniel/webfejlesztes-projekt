@@ -3,7 +3,6 @@ import { CountryService } from '../services/country.service';
 import { Country } from '../models';
 import { Continent } from '../continent';
 import { Sort } from '@angular/material/sort';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ReloadListService } from '../services/reload-list.service';
 
 @Component({
@@ -18,7 +17,7 @@ export class CountryListComponent implements OnInit {
 
   Continent: any = Continent;
 
-  constructor(private countryService: CountryService, private fb: FormBuilder, private reloadListService: ReloadListService) {
+  constructor(private countryService: CountryService, private reloadListService: ReloadListService) {
     this.reloadListService.triggerLoadCountries$.subscribe(() => {
       this.loadCountries();
     });
