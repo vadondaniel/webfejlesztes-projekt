@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CountryService } from '../services/country.service';
 import { Country } from '../models';
 import { Continent } from '../continent';
-import { Sort, MatSort } from '@angular/material/sort';
+import { Sort } from '@angular/material/sort';
 
 @Component({
   selector: 'app-country-list',
@@ -31,8 +31,6 @@ export class CountryListComponent implements OnInit {
   }
 
   sortData(sort: Sort) {
-    this.sort.active = sort.active;
-    this.sort.direction = sort.direction;
 
     if (!this.countries) {
       return;
@@ -59,11 +57,5 @@ export class CountryListComponent implements OnInit {
 }
 
 function compare(a: number | string, b: number | string, isAsc: boolean) {
-  if (typeof a === 'number' && typeof b === 'number') {
-    return (a < b ? -1 : 1) * (isAsc ? 1 : -1);
-  } else if (typeof a === 'string' && typeof b === 'string') {
-    return a.localeCompare(b) * (isAsc ? 1 : -1);
-  } else {
-    return 0;
-  }
+  return (a < b ? -1 : 1) * (isAsc ? 1 : -1);
 }
