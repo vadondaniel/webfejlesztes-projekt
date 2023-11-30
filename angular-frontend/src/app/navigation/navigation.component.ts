@@ -29,12 +29,6 @@ export class NavigationComponent {
       return 'Countries';
     } else if (this.router.url.includes('cities')) {
       return 'Cities';
-    } else if (this.router.url.includes('add-country')) {
-      return 'Add Country';
-    } else if (this.router.url.includes('add-city')) {
-      return 'Add City';
-    } else if (this.router.url.includes('country-table')) {
-      return 'Country Table';
     } else {
       return 'Home';
     }

@@ -4,8 +4,6 @@ import { CountryListComponent } from './country-list/country-list.component';
 import { CountryDetailsComponent } from './country-details/country-details.component';
 import { CityListComponent } from './city-list/city-list.component';
 import { CityDetailsComponent } from './city-details/city-details.component';
-import { AddCountryComponent } from './add-country/add-country.component';
-import { AddCityComponent } from './add-city/add-city.component';
 
 export const routes: Routes = [
     { path: 'countries', component: CountryListComponent },
@@ -13,8 +11,6 @@ export const routes: Routes = [
     { path: 'cities', component: CityListComponent },
     { path: 'cities/:id', component: CityDetailsComponent },
     { path: '', redirectTo: '/countries', pathMatch: 'full' },
-    { path: 'add-country', component: AddCountryComponent },
-    { path: 'add-city', component: AddCityComponent },
 ];
 
 @NgModule({
