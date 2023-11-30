@@ -36,4 +36,30 @@ public class CountryController {
         Country savedCountry = countryService.addCountry(country);
         return ResponseEntity.ok(savedCountry);
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Country> deleteCountry(@PathVariable Long id) {
+        Optional<Country> country = countryService.getCountryById(id);
+        if (country.isPresent()) {
+            countryService.deleteCountry(id);
+            return ResponseEntity.ok().build();
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Country> updateCountry(@PathVariable Long id, @RequestBody Country country) {
+        Optional<Country> countryOptional = countryService.getCountryById(id);
+        if (countryOptional.isPresent()) {
+            Country countryToUpdate = countryOptional.get();
+            countryToUpdate.setName(country.getName());
+            countryToUpdate.setPopulation(country.getPopulation());
+            countryToUpdate.setContinent(country.getContinent());
+            Country updatedCountry = countryService.addCountry(countryToUpdate);
+            return ResponseEntity.ok(updatedCountry);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
 }
