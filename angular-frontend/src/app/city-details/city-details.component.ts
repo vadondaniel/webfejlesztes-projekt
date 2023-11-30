@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CityService } from '../services/city.service';
-import { City } from '../models';
+import { CountryService } from '../services/country.service';
+import { City, Country } from '../models';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -8,10 +9,11 @@ import { ActivatedRoute } from '@angular/router';
   templateUrl: './city-details.component.html',
   styleUrls: ['./city-details.component.css']
 })
-export class CityDetailsComponent implements OnInit{
+export class CityDetailsComponent implements OnInit {
   city!: City;
+  country!: Country;
 
-  constructor(private cityService: CityService, private route: ActivatedRoute) {}
+  constructor(private cityService: CityService, private countryService: CountryService, private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
@@ -23,7 +25,13 @@ export class CityDetailsComponent implements OnInit{
   loadCityDetails(cityId: number) {
     this.cityService.getCityById(cityId).subscribe(data => {
       this.city = data;
-      console.log(data);
+      this.loadCountryDetails(this.city.countryId);
+    });
+  }
+
+  loadCountryDetails(countryId: number) {
+    this.countryService.getCountryById(countryId).subscribe(data => {
+      this.country = data;
     });
   }
 }
