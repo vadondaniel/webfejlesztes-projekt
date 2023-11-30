@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { CityService } from '../services/city.service';
+import { ReloadListService } from '../services/reload-list.service';
 import { City } from '../models';
 import { Sort } from '@angular/material/sort';
 
@@ -13,13 +14,17 @@ export class CityListComponent {
   cities: City[] | undefined;
   sortedCities: City[] = [];
 
-  constructor(private cityService: CityService) { }
-
-  ngOnInit() {
-    this.loadCountries();
+  constructor(private cityService: CityService, private reloadListService: ReloadListService) {
+    this.reloadListService.triggerLoadCities$.subscribe(() => {
+      this.loadCities();
+    });
   }
 
-  loadCountries() {
+  ngOnInit() {
+    this.loadCities();
+  }
+
+  loadCities() {
     this.cityService.getCities().subscribe(data => {
       this.cities = data;
       this.sortData(this.sort);

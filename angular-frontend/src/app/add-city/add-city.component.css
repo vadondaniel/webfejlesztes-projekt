@@ -1,25 +1,18 @@
-label {
-  font-weight: bold;
-  margin-bottom: 10px;
-  color: #7e57c2; /* deep purple */
+.city-form-card {
+  max-width: 400px;
+  margin: 20px auto;
+  padding: 20px;
 }
 
-input, select {
-  padding: 5px;
-  margin-bottom: 10px;
-  background-color: #303030; /* dark grey */
-  color: #e8eaf6; /* light purple */
-  border: 1px solid #ddd;
+.city-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 button {
-  padding: 10px 20px;
-  background-color: #7e57c2; /* deep purple */
-  color: #fff;
-  border: none;
-  cursor: pointer;
-}
-
-button:hover {
-  background-color: #66bb6a; /* light green */
+  width: auto;
+  display: flex;
+  justify-content: center;
+  margin: auto;
 }

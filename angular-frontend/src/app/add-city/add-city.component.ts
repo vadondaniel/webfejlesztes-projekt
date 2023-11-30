@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { CityService } from '../services/city.service';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { CountryService } from '../services/country.service';
-import { Country } from '../models';
+import { ReloadListService } from '../services/reload-list.service';
+import { CityService } from '../services/city.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-add-city',
@@ -12,13 +13,15 @@ import { Country } from '../models';
 export class AddCityComponent implements OnInit {
 
   cityForm: FormGroup;
-  countries: Country[] = [];
+  countries: any[] = [];
 
-  constructor(private fb: FormBuilder, private cityService: CityService, private countryService: CountryService) {
+  loading = false;
+
+  constructor(private fb: FormBuilder, private countryService: CountryService, private cityService: CityService, private snackBar: MatSnackBar, private reloadListService: ReloadListService) {
     this.cityForm = this.fb.group({
-      name: ['', Validators.required],
-      population: [0, Validators.required],
-      countryId: [0, Validators.required]
+      name: ['', [Validators.required, Validators.minLength(3)]],
+      population: ['', [Validators.required, positiveNumberValidator]],
+      countryId: [null, Validators.required]
     });
   }
 
@@ -28,17 +31,48 @@ export class AddCityComponent implements OnInit {
 
   loadCountries(): void {
     this.countryService.getCountries().subscribe(data => {
-      this.countries = data;
+      this.countries = data.sort((a, b) => a.name.localeCompare(b.name));
     });
   }
 
-  onSubmit(): void {
+  onSubmit() {
+    this.loading = true;
     if (this.cityForm.valid) {
       const newCity = this.cityForm.value;
       this.cityService.addCity(newCity).subscribe(() => {
         console.log('City added successfully');
-        // Optionally, you can navigate to the list view or perform other actions
+        this.cityForm.reset({
+          name: '',
+          population: '',
+          countryId: null
+        });
+        Object.keys(this.cityForm.controls).forEach(key => {
+          const control = this.cityForm.get(key);
+          if (control) {
+            control.markAsPristine();
+            control.markAsUntouched();
+            control.setErrors(null);
+          }
+        });
+        this.reloadListService.loadCities();
+        this.snackBar.open('City added successfully', 'Close', {
+          duration: 3000
+        });
+        this.loading = false;
+      }, error => {
+        console.error('Error:', error);
+        this.snackBar.open('Error adding city', 'Close', {
+          duration: 3000
+        });
+        this.loading = false;
       });
+    } else {
+      this.loading = false;
     }
   }
+}
+
+function positiveNumberValidator(control: FormControl) {
+  const isNotPositive = control.value <= 0;
+  return isNotPositive ? { 'notPositive': { value: control.value } } : null;
 }
