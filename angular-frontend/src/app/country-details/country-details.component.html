@@ -1,15 +1,23 @@
 <div *ngIf="country">
-  <div>
-    <label>ID: </label>{{ country.id }}
-  </div>
-  <div>
-    <label>Name: </label>{{ country.name }}
-  </div>
-  <div>
-    <label>Population: </label>{{ country.population }}
-  </div>
-  <div>
-    <label>Continent: </label>{{ country.continent }}
+  <div style="display: inline-block;">
+    <table style="border: none;">
+      <tr>
+        <td style="border: none; text-align: right;"><label>ID: </label></td>
+        <td style="border: none;">{{ country.id }}</td>
+      </tr>
+      <tr>
+        <td style="border: none; text-align: right;"><label>Name: </label></td>
+        <td style="border: none;">{{ country.name }}</td>
+      </tr>
+      <tr>
+        <td style="border: none; text-align: right;"><label>Population: </label></td>
+        <td style="border: none;">{{ country.population }}</td>
+      </tr>
+      <tr>
+        <td style="border: none; text-align: right;"><label>Continent: </label></td>
+        <td style="border: none;">{{ country.continent }}</td>
+      </tr>
+    </table>
   </div>
 
   <h2>Cities</h2>
