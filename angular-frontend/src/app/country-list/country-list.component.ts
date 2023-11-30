@@ -3,7 +3,7 @@ import { CountryService } from '../services/country.service';
 import { Country } from '../models';
 import { Continent } from '../continent';
 import { Sort } from '@angular/material/sort';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-country-list',
@@ -22,9 +22,9 @@ export class CountryListComponent implements OnInit {
 
   constructor(private countryService: CountryService, private fb: FormBuilder) {
     this.countryForm = this.fb.group({
-      name: [''],
-      population: [''],
-      continent: ['']
+      name: ['', Validators.required],
+      population: ['', Validators.required],
+      continent: ['', Validators.required]
     });
   }
 
@@ -36,7 +36,6 @@ export class CountryListComponent implements OnInit {
     this.countryService.getCountries().subscribe(data => {
       this.countries = data;
       this.sortData(this.sort);
-      console.log(data);
     });
   }
 
@@ -70,6 +69,12 @@ export class CountryListComponent implements OnInit {
       const newCountry = this.countryForm.value;
       this.countryService.addCountry(newCountry).subscribe(() => {
         console.log('Country added successfully');
+        this.countryForm.reset({
+          name: '',
+          population: '',
+          continent: ''
+        });
+        this.loadCountries();
         // Optionally, you can navigate to the list view or perform other actions
       });
     }

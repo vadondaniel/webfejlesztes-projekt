@@ -26,24 +26,24 @@
   <form [formGroup]="countryForm" (ngSubmit)="onSubmit()" class="country-form">
     <mat-form-field appearance="fill" class="full-width">
       <mat-label>Name</mat-label>
-      <input matInput type="text" formControlName="name">
+      <input matInput type="text" formControlName="name" required>
     </mat-form-field>
-
+    
     <mat-form-field appearance="fill" class="full-width">
       <mat-label>Population</mat-label>
-      <input matInput type="number" formControlName="population">
+      <input matInput type="number" formControlName="population" required>
     </mat-form-field>
-
+    
     <mat-form-field appearance="fill" class="full-width">
       <mat-label>Continent</mat-label>
-      <mat-select formControlName="continent">
+      <mat-select formControlName="continent" required>
         <mat-option *ngFor="let option of continentOptions" [value]="option">
           {{ Continent[option] }}
         </mat-option>
       </mat-select>
     </mat-form-field>
 
-    <button mat-raised-button color="primary" type="submit">
+    <button mat-raised-button color="primary" type="submit" class="mat-button-base">
       Add Country
     </button>
   </form>
