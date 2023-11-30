@@ -3,11 +3,23 @@
     <mat-form-field appearance="fill" class="full-width">
       <mat-label>Name</mat-label>
       <input matInput type="text" formControlName="name" required>
+      <mat-error *ngIf="countryForm.get('name')?.hasError('required') && countryForm.get('name')?.touched">
+        Name is required.
+      </mat-error>
+      <mat-error *ngIf="countryForm.get('name')?.hasError('minlength') && countryForm.get('name')?.touched">
+        Name must be at least 3 characters long.
+      </mat-error>
     </mat-form-field>
     
     <mat-form-field appearance="fill" class="full-width">
       <mat-label>Population</mat-label>
       <input matInput type="number" formControlName="population" required>
+      <mat-error *ngIf="countryForm.get('population')?.hasError('required') && countryForm.get('population')?.touched">
+        Population is required.
+      </mat-error>
+      <mat-error *ngIf="countryForm.get('population')?.hasError('notPositive') && countryForm.get('population')?.touched">
+        Population must be a positive number.
+      </mat-error>
     </mat-form-field>
     
     <mat-form-field appearance="fill" class="full-width">
@@ -17,6 +29,9 @@
           {{ Continent[option] }}
         </mat-option>
       </mat-select>
+      <mat-error *ngIf="countryForm.get('continent')?.hasError('required') && countryForm.get('continent')?.touched">
+        Continent is required.
+      </mat-error>
     </mat-form-field>
 
     <button mat-raised-button color="primary" type="submit" [disabled]="countryForm.invalid" class="mat-button-base">
