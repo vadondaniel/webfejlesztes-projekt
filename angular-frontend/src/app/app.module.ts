@@ -20,6 +20,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatCardModule } from '@angular/material/card';
+import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 
 import { CountryListComponent } from './country-list/country-list.component';
 import { CityListComponent } from './city-list/city-list.component';
@@ -62,7 +63,8 @@ import { NavigationComponent } from './navigation/navigation.component';
         MatFormFieldModule,
         MatInputModule,
         MatSelectModule,
-        MatCardModule
+        MatCardModule,
+        MatProgressSpinnerModule
     ],
     providers: [],
     bootstrap: [AppComponent]

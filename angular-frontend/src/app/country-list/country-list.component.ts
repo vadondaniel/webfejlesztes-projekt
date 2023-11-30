@@ -4,6 +4,7 @@ import { Country } from '../models';
 import { Continent } from '../continent';
 import { Sort } from '@angular/material/sort';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ReloadListService } from '../services/reload-list.service';
 
 @Component({
   selector: 'app-country-list',
@@ -15,16 +16,11 @@ export class CountryListComponent implements OnInit {
   countries: Country[] | undefined;
   sortedCountries: Country[] = [];
 
-  countryForm: FormGroup;
-  continentOptions = Object.keys(Continent).filter(key => isNaN(Number(key)));
-
   Continent: any = Continent;
 
-  constructor(private countryService: CountryService, private fb: FormBuilder) {
-    this.countryForm = this.fb.group({
-      name: ['', Validators.required],
-      population: ['', Validators.required],
-      continent: ['', Validators.required]
+  constructor(private countryService: CountryService, private fb: FormBuilder, private reloadListService: ReloadListService) {
+    this.reloadListService.triggerLoadCountries$.subscribe(() => {
+      this.loadCountries();
     });
   }
 
@@ -64,21 +60,6 @@ export class CountryListComponent implements OnInit {
     });
   }
 
-  onSubmit(): void {
-    if (this.countryForm.valid) {
-      const newCountry = this.countryForm.value;
-      this.countryService.addCountry(newCountry).subscribe(() => {
-        console.log('Country added successfully');
-        this.countryForm.reset({
-          name: '',
-          population: '',
-          continent: ''
-        });
-        this.loadCountries();
-        // Optionally, you can navigate to the list view or perform other actions
-      });
-    }
-  }
 }
 
 function compare(a: number | string, b: number | string, isAsc: boolean) {
