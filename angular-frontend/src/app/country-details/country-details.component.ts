@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { CountryService } from '../services/country.service';
 import { Country } from '../models';
 import { ActivatedRoute } from '@angular/router';
-import { Continent } from '../continent';
 
 @Component({
   selector: 'app-country-details',
@@ -11,8 +10,6 @@ import { Continent } from '../continent';
 })
 export class CountryDetailsComponent implements OnInit {
   country!: Country;
-
-  Continent: any = Continent;
 
   constructor(private countryService: CountryService, private route: ActivatedRoute) {}
 

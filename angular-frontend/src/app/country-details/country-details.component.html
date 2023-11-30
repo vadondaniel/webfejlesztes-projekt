@@ -10,12 +10,24 @@
     <label>Population: </label>{{ country.population }}
   </div>
   <div>
-    <label>Continent: </label>{{ Continent[country.continent] }}
+    <label>Continent: </label>{{ country.continent }}
   </div>
-  <h3>Cities:</h3>
-  <ul>
-    <li *ngFor="let city of country.cities">
-      {{ city.name }} - Population: {{ city.population }}
-    </li>
-  </ul>
+
+  <h2>Cities</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Population</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let city of country.cities">
+        <td>{{ city.id }}</td>
+        <td><a [routerLink]="['/cities', city.id]">{{ city.name }}</a></td>
+        <td>{{ city.population }}</td>
+      </tr>
+    </tbody>
+  </table>
 </div>
