@@ -29,6 +29,7 @@ import { CityDetailsComponent } from './city-details/city-details.component';
 import { AppComponent } from './app.component';
 import { AddCountryComponent } from './add-country/add-country.component';
 import { AddCityComponent } from './add-city/add-city.component';
+import { AddCityToCountryComponent } from './add-city-to-country/add-city-to-country.component';
 import { NavigationComponent } from './navigation/navigation.component';
 
 
@@ -41,7 +42,8 @@ import { NavigationComponent } from './navigation/navigation.component';
         AppComponent,
         AddCountryComponent,
         AddCityComponent,
-        NavigationComponent
+        NavigationComponent,
+        AddCityToCountryComponent
     ],
     imports: [
         BrowserModule,
