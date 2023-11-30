@@ -1,15 +1,16 @@
 h2 {
     font-size: 24px;
     font-weight: bold;
-    color: #333;
+    color: #90caf9;
     text-transform: uppercase;
 }
 
 a {
     text-decoration: none;
-    color: #333;
+    color: #e0e0e0;
 }
 
 a:hover {
     text-decoration: underline;
+    color: #64b5f6;
 }

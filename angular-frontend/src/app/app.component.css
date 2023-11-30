@@ -4,6 +4,8 @@
     justify-content: center;
     align-items: center;
     margin-bottom: 10px;
+    background-color: #121212;
+    color: #e0e0e0;
 }
 
 .dropdown-menu {
@@ -11,13 +13,19 @@
     padding-right: 10px;
     padding-left: 10px;
     min-width: 120px;
+    background-color: #333;
+    color: #e0e0e0;
 }
 
 .mat-select-panel {
     max-width: 200px;
+    background-color: #333;
+    color: #e0e0e0;
 }
 
 router-outlet {
     display: block;
     margin-top: 20px;
+    background-color: #121212;
+    color: #e0e0e0;
 }
