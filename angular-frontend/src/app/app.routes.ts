@@ -12,7 +12,7 @@ export const routes: Routes = [
     { path: 'countries/:id', component: CountryDetailsComponent },
     { path: 'cities', component: CityListComponent },
     { path: 'cities/:id', component: CityDetailsComponent },
-    { path: '', redirectTo: '/', pathMatch: 'full' },
+    { path: '', redirectTo: '/countries', pathMatch: 'full' },
     { path: 'add-country', component: AddCountryComponent },
     { path: 'add-city', component: AddCityComponent },
 ];
