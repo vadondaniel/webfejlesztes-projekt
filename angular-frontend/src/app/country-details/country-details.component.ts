@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CountryService } from '../services/country.service';
+import { ReloadListService } from '../services/reload-list.service';
 import { City, Country } from '../models';
 import { ActivatedRoute } from '@angular/router';
 import { Sort } from '@angular/material/sort';
@@ -14,7 +15,11 @@ export class CountryDetailsComponent implements OnInit {
   sort: Sort = { active: 'id', direction: 'asc' };
   sortedCities: City[] = [];
 
-  constructor(private countryService: CountryService, private route: ActivatedRoute) {}
+  constructor(private countryService: CountryService, private route: ActivatedRoute, private reloadListService: ReloadListService) {
+    this.reloadListService.triggerLoadCountryDetails$.subscribe(() => {
+      this.loadCountryDetails(this.country.id);
+    });
+  }
 
   ngOnInit() {
     this.route.params.subscribe(params => {

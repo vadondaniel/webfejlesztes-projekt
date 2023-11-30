@@ -47,7 +47,7 @@ export class AddCityToCountryComponent {
               control.setErrors(null);
             }
           });
-          this.reloadListService.loadCities();
+          this.reloadListService.loadCountryDetails(this.countryId);
           this.snackBar.open('City added successfully', 'Close', {
             duration: 3000
           });

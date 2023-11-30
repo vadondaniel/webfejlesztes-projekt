@@ -21,4 +21,12 @@ export class ReloadListService {
   loadCities() {
     this.triggerLoadCities.next();
   }
+
+  private triggerLoadCountryDetails = new Subject<number>();
+
+  triggerLoadCountryDetails$ = this.triggerLoadCountryDetails.asObservable();
+
+  loadCountryDetails(countryId: number) {
+    this.triggerLoadCountryDetails.next(countryId);
+  }
 }
