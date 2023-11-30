@@ -36,4 +36,30 @@ public class CityController {
         City savedCity = cityService.addCity(city);
         return ResponseEntity.ok(savedCity);
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<City> deleteCity(@PathVariable Long id) {
+        Optional<City> city = cityService.getCityById(id);
+        if (city.isPresent()) {
+            cityService.deleteCity(id);
+            return ResponseEntity.ok().build();
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    @PostMapping("/{id}")
+    public ResponseEntity<City> updateCity(@PathVariable Long id, @RequestBody City city) {
+        Optional<City> cityOptional = cityService.getCityById(id);
+        if (cityOptional.isPresent()) {
+            City cityToUpdate = cityOptional.get();
+            cityToUpdate.setName(city.getName());
+            cityToUpdate.setPopulation(city.getPopulation());
+            cityToUpdate.setCountry(city.getCountry());
+            City updatedCity = cityService.addCity(cityToUpdate);
+            return ResponseEntity.ok(updatedCity);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
 }
