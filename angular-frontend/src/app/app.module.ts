@@ -16,7 +16,6 @@ import { AppComponent } from './app.component';
 import { AddCountryComponent } from './add-country/add-country.component';
 import { AddCityComponent } from './add-city/add-city.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { CountryTableComponent } from './country-table/country-table.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
@@ -36,7 +35,6 @@ import { MatListModule } from '@angular/material/list';
         AppComponent,
         AddCountryComponent,
         AddCityComponent,
-        CountryTableComponent,
         NavigationComponent
     ],
     imports: [
