@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { CountryService } from '../services/country.service';
+import { ReloadListService } from '../services/reload-list.service';
 import { Country } from '../models';
 import { Continent } from '../continent';
 import { Sort } from '@angular/material/sort';
-import { ReloadListService } from '../services/reload-list.service';
 
 @Component({
   selector: 'app-country-list',
