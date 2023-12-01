@@ -1,5 +1,5 @@
 <mat-card class="country-form-card">
-    <form [formGroup]="countryForm" (ngSubmit)="onSubmit()" class="country-form">
+    <form [formGroup]="countryForm" (ngSubmit)="onSubmit()" class="country-form" autocomplete="off">
         <mat-form-field appearance="fill">
             <mat-label>Country ID</mat-label>
             <input matInput formControlName="id" type="number" readonly>
@@ -7,7 +7,7 @@
 
         <mat-form-field appearance="fill">
             <mat-label>Country Name</mat-label>
-            <input matInput formControlName="name">
+            <input matInput formControlName="name" autocomplete="off">
         </mat-form-field>
 
         <mat-form-field appearance="fill">
