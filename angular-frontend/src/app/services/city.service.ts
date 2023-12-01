@@ -26,4 +26,16 @@ export class CityService {
   addCity(city: City): Observable<City> {
     return this.http.post<City>(this.baseUrl, city);
   }
+
+  // Update an existing city
+  updateCity(city: City): Observable<City> {
+    const url = `${this.baseUrl}/${city.id}`;
+    return this.http.put<City>(url, city);
+  }
+
+  // Delete a city by ID
+  deleteCity(id: number): Observable<City> {
+    const url = `${this.baseUrl}/${id}`;
+    return this.http.delete<City>(url);
+  }
 }

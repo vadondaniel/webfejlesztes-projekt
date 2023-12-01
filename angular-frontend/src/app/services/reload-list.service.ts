@@ -29,4 +29,12 @@ export class ReloadListService {
   loadCountryDetails(countryId: number) {
     this.triggerLoadCountryDetails.next(countryId);
   }
+
+  private triggerLoadCityDetails = new Subject<number>();
+
+  triggerLoadCityDetails$ = this.triggerLoadCityDetails.asObservable();
+
+  loadCityDetails(cityId: number) {
+    this.triggerLoadCityDetails.next(cityId);
+  }
 }
