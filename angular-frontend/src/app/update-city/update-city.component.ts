@@ -86,6 +86,6 @@ export class UpdateCityComponent implements OnInit {
 }
 
 function positiveNumberValidator(control: FormControl) {
-  const isNotPositive = control.value <= 0;
+  const isNotPositive = control.value < 0;
   return isNotPositive ? { 'notPositive': { value: control.value } } : null;
 }
