@@ -1,4 +1,4 @@
-<table>
+<table *ngIf="city && country">
   <tr class="no-hover-highlight">
     <td style="border: none; display: inline-block;">
       <div style="display: inline-block;">
@@ -25,10 +25,8 @@
     </td>
 
     <td style="border: none; text-align: center;">
-      <div *ngIf="city">
-        <h2>Update City</h2>
-        <app-update-city [cityId]="city.id"></app-update-city>
-      </div>
+      <h2>Update City</h2>
+      <app-update-city [cityId]="city.id"></app-update-city>
     </td>
   </tr>
 </table>
