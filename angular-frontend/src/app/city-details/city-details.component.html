@@ -1,27 +1,33 @@
 <table *ngIf="city && country">
   <tr class="no-hover-highlight">
-    <td style="border: none; display: inline-block;">
-      <div style="display: inline-block;">
-        <table style="border: none;">
-          <tr>
-            <td style="border: none; text-align: right;"><label>ID: </label></td>
-            <td style="border: none;">{{ city.id }}</td>
-          </tr>
-          <tr>
-            <td style="border: none; text-align: right;"><label>Name: </label></td>
-            <td style="border: none;">{{ city.name }}</td>
-          </tr>
-          <tr>
-            <td style="border: none; text-align: right;"><label>Population: </label></td>
-            <td style="border: none;">{{ city.population }}</td>
-          </tr>
-          <tr>
-            <td style="border: none; text-align: right;"><label>Country ID: </label></td>
-            <td style="border: none;">{{ city.countryId }} (<a [routerLink]="['/countries', country.id]">{{ country.name
-                }}</a>)</td>
-          </tr>
-        </table>
-      </div>
+    <td style="border: none; display: flex; justify-content: center; align-items: center;">
+      <mat-card>
+        <mat-card-content>
+          <div style="display: inline-block;">
+            <table style="border: none; background-color: #424242;">
+              <tr>
+                <td style="border: none; text-align: right;"><label>ID: </label></td>
+                <td style="border: none;">{{ city.id }}</td>
+              </tr>
+              <tr>
+                <td style="border: none; text-align: right;"><label>Name: </label></td>
+                <td style="border: none;">{{ city.name }}</td>
+              </tr>
+              <tr>
+                <td style="border: none; text-align: right;"><label>Population: </label></td>
+                <td style="border: none;">{{ city.population }}</td>
+              </tr>
+              <tr>
+                <td style="border: none; text-align: right;"><label>Country ID: </label></td>
+                <td style="border: none;">{{ city.countryId }} (<a [routerLink]="['/countries', country.id]">{{
+                    country.name
+                    }}</a>)</td>
+              </tr>
+            </table>
+          </div>
+        </mat-card-content>
+
+      </mat-card>
     </td>
 
     <td style="border: none; text-align: center;  vertical-align: top;">
