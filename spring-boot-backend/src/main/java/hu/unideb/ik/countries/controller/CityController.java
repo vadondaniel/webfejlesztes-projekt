@@ -48,7 +48,7 @@ public class CityController {
         }
     }
 
-    @PostMapping("/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<City> updateCity(@PathVariable Long id, @RequestBody City city) {
         Optional<City> cityOptional = cityService.getCityById(id);
         if (cityOptional.isPresent()) {
