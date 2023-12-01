@@ -29,6 +29,7 @@ export class UpdateCityComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadCity();
+    this.loadCountries();
   }
 
   loadCountries(): void {
