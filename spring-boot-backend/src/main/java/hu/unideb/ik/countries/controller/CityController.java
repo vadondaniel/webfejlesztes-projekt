@@ -1,7 +1,9 @@
 package hu.unideb.ik.countries.controller;
 
 import hu.unideb.ik.countries.entity.City;
+import hu.unideb.ik.countries.entity.Country;
 import hu.unideb.ik.countries.service.CityService;
+import hu.unideb.ik.countries.service.CountryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,10 +16,12 @@ import java.util.Optional;
 public class CityController {
 
     private final CityService cityService;
+    private final CountryService countryService;
 
     @Autowired
-    public CityController(CityService cityService) {
+    public CityController(CityService cityService, CountryService countryService) {
         this.cityService = cityService;
+        this.countryService = countryService;
     }
 
     @GetMapping
@@ -49,13 +53,21 @@ public class CityController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<City> updateCity(@PathVariable Long id, @RequestBody City city) {
+    public ResponseEntity<?> updateCity(@PathVariable Long id, @RequestBody City city) {
         Optional<City> cityOptional = cityService.getCityById(id);
         if (cityOptional.isPresent()) {
             City cityToUpdate = cityOptional.get();
             cityToUpdate.setName(city.getName());
             cityToUpdate.setPopulation(city.getPopulation());
-            cityToUpdate.setCountry(city.getCountry());
+
+            // Fetch the Country object associated with the given countryId
+            Optional<Country> countryOptional = countryService.getCountryById(city.getCountryId());
+            if (countryOptional.isPresent()) {
+                cityToUpdate.setCountry(countryOptional.get());
+            } else {
+                return ResponseEntity.badRequest().body("Invalid countryId");
+            }
+
             City updatedCity = cityService.addCity(cityToUpdate);
             return ResponseEntity.ok(updatedCity);
         } else {
