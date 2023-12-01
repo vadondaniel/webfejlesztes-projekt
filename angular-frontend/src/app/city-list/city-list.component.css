@@ -7,3 +7,7 @@ a:hover {
     text-decoration: underline;
     color: #64b5f6;
 }
+
+.no-hover-highlight:hover {
+    background-color: inherit !important;
+}

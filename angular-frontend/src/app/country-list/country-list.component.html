@@ -1,25 +1,40 @@
-<table matSort (matSortChange)="sortData($event)">
-  <thead>
-    <tr>
-      <th mat-sort-header="id">ID</th>
-      <th mat-sort-header="name">Name</th>
-      <th mat-sort-header="population">Population</th>
-      <th mat-sort-header="continent">Continent</th>
-      <th mat-sort-header="cities">Number of Cities</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let country of sortedCountries">
-      <td>{{ country.id }}</td>
-      <td><a [routerLink]="['/countries', country.id]">{{ country.name }}</a></td>
-      <td>{{ country.population }}</td>
-      <td>{{ country.continent }}</td>
-      <td>{{ country.cities.length }}</td>
-    </tr>
-    <tr *ngIf="sortedCountries.length === 0">
-      <td colspan="5">No countries found</td>
-    </tr>
-  </tbody>
+<table>
+  <tr class="no-hover-highlight">
+    <td>
+      <div style="display: flex; justify-content: center; align-items: center;">
+        <mat-card style="width: auto;">
+          <mat-card-content>
+            <table matSort (matSortChange)="sortData($event)">
+              <thead>
+                <tr>
+                  <th mat-sort-header="id">ID</th>
+                  <th mat-sort-header="name">Name</th>
+                  <th mat-sort-header="population">Population</th>
+                  <th mat-sort-header="continent">Continent</th>
+                  <th mat-sort-header="cities">Number of Cities</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let country of sortedCountries">
+                  <td>{{ country.id }}</td>
+                  <td><a [routerLink]="['/countries', country.id]">{{ country.name }}</a></td>
+                  <td>{{ country.population }}</td>
+                  <td>{{ country.continent }}</td>
+                  <td>{{ country.cities.length }}</td>
+                </tr>
+                <tr *ngIf="sortedCountries.length === 0">
+                  <td colspan="5">No countries found</td>
+                </tr>
+              </tbody>
+            </table>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </td>
+    <td style="vertical-align: top;">
+      <div style="position: sticky; top: 70px; height: 60vh; overflow-y: auto;">
+        <app-add-country></app-add-country>
+      </div>
+    </td>
+  </tr>
 </table>
-
-<app-add-country></app-add-country>

@@ -1,23 +1,38 @@
-<table matSort (matSortChange)="sortData($event)">
-  <thead>
-    <tr>
-      <th mat-sort-header="id">ID</th>
-      <th mat-sort-header="name">Name</th>
-      <th mat-sort-header="population">Population</th>
-      <th mat-sort-header="countryId">Country ID</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let city of sortedCities">
-      <td>{{ city.id }}</td>
-      <td><a [routerLink]="['/cities', city.id]">{{ city.name }}</a></td>
-      <td>{{ city.population }}</td>
-      <td>{{ city.countryId }}</td>
-    </tr>
-    <tr *ngIf="sortedCities.length === 0">
-      <td colspan="5">No cities found</td>
-    </tr>
-  </tbody>
+<table>
+  <tr class="no-hover-highlight">
+    <td>
+      <div style="display: flex; justify-content: center; align-items: center;">
+        <mat-card style="width: auto;">
+          <mat-card-content>
+            <table matSort (matSortChange)="sortData($event)">
+              <thead>
+                <tr>
+                  <th mat-sort-header="id">ID</th>
+                  <th mat-sort-header="name">Name</th>
+                  <th mat-sort-header="population">Population</th>
+                  <th mat-sort-header="countryId">Country ID</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let city of sortedCities">
+                  <td>{{ city.id }}</td>
+                  <td><a [routerLink]="['/cities', city.id]">{{ city.name }}</a></td>
+                  <td>{{ city.population }}</td>
+                  <td>{{ city.countryId }}</td>
+                </tr>
+                <tr *ngIf="sortedCities.length === 0">
+                  <td colspan="5">No cities found</td>
+                </tr>
+              </tbody>
+            </table>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </td>
+    <td style="vertical-align: top;">
+      <div style="position: sticky; top: 70px; height: 60vh; overflow-y: auto;">
+        <app-add-city></app-add-city>
+      </div>
+    </td>
+  </tr>
 </table>
-
-<app-add-city></app-add-city>
