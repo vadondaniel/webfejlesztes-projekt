@@ -1,20 +1,34 @@
-<div style="display: inline-block;">
-  <table style="border: none;">
-    <tr>
-      <td style="border: none; text-align: right;"><label>ID: </label></td>
-      <td style="border: none;">{{ city.id }}</td>
-    </tr>
-    <tr>
-      <td style="border: none; text-align: right;"><label>Name: </label></td>
-      <td style="border: none;">{{ city.name }}</td>
-    </tr>
-    <tr>
-      <td style="border: none; text-align: right;"><label>Population: </label></td>
-      <td style="border: none;">{{ city.population }}</td>
-    </tr>
-    <tr>
-      <td style="border: none; text-align: right;"><label>Country ID: </label></td>
-      <td style="border: none;">{{ city.countryId }} (<a [routerLink]="['/countries', country.id]">{{ country.name }}</a>)</td>
-    </tr>
-  </table>
-</div>
+<table>
+  <tr class="no-hover-highlight">
+    <td style="border: none; display: inline-block;">
+      <div style="display: inline-block;">
+        <table style="border: none;">
+          <tr>
+            <td style="border: none; text-align: right;"><label>ID: </label></td>
+            <td style="border: none;">{{ city.id }}</td>
+          </tr>
+          <tr>
+            <td style="border: none; text-align: right;"><label>Name: </label></td>
+            <td style="border: none;">{{ city.name }}</td>
+          </tr>
+          <tr>
+            <td style="border: none; text-align: right;"><label>Population: </label></td>
+            <td style="border: none;">{{ city.population }}</td>
+          </tr>
+          <tr>
+            <td style="border: none; text-align: right;"><label>Country ID: </label></td>
+            <td style="border: none;">{{ city.countryId }} (<a [routerLink]="['/countries', country.id]">{{ country.name
+                }}</a>)</td>
+          </tr>
+        </table>
+      </div>
+    </td>
+
+    <td style="border: none; text-align: center;">
+      <div *ngIf="city">
+        <h2>Update City</h2>
+        <app-update-city [cityId]="city.id"></app-update-city>
+      </div>
+    </td>
+  </tr>
+</table>
