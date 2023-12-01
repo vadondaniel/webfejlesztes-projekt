@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CityService } from '../services/city.service';
 import { CountryService } from '../services/country.service';
+import { ReloadListService } from '../services/reload-list.service';
 import { City, Country } from '../models';
 import { ActivatedRoute } from '@angular/router';
 
@@ -13,7 +14,11 @@ export class CityDetailsComponent implements OnInit {
   city!: City;
   country!: Country;
 
-  constructor(private cityService: CityService, private countryService: CountryService, private route: ActivatedRoute) { }
+  constructor(private cityService: CityService, private countryService: CountryService, private reloadService: ReloadListService, private route: ActivatedRoute) {
+    this.reloadService.triggerLoadCityDetails$.subscribe(() => {
+      this.loadCityDetails(this.city.id);
+    });
+   }
 
   ngOnInit() {
     this.route.params.subscribe(params => {

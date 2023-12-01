@@ -11,9 +11,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class AddCityToCountryComponent {
   @Input() countryId: any;
-
   cityForm: FormGroup;
-
   loading = false;
 
   constructor(private fb: FormBuilder, private cityService: CityService, private snackBar: MatSnackBar, private reloadListService: ReloadListService) {
@@ -47,7 +45,7 @@ export class AddCityToCountryComponent {
               control.setErrors(null);
             }
           });
-          this.reloadListService.loadCountryDetails(this.countryId);
+          this.reloadListService.loadCountryDetails();
           this.snackBar.open('City added successfully', 'Close', {
             duration: 3000
           });

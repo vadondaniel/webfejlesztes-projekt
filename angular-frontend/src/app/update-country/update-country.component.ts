@@ -61,7 +61,7 @@ export class UpdateCountryComponent implements OnInit {
               control.setErrors(null);
             }
           });
-          this.reloadListService.loadCountryDetails(this.countryId);
+          this.reloadListService.loadCountryDetails();
           this.snackBar.open('Country updated successfully', 'Close', {
             duration: 3000
           });

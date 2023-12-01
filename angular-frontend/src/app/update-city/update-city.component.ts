@@ -65,7 +65,7 @@ export class UpdateCityComponent implements OnInit {
               control.setErrors(null);
             }
           });
-          this.reloadListService.loadCityDetails(this.cityId);
+          this.reloadListService.loadCityDetails();
           this.snackBar.open('City updated successfully', 'Close', {
             duration: 3000
           });

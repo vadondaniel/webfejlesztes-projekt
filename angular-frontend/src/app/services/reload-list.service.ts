@@ -22,19 +22,19 @@ export class ReloadListService {
     this.triggerLoadCities.next();
   }
 
-  private triggerLoadCountryDetails = new Subject<number>();
+  private triggerLoadCountryDetails = new Subject<void>();
 
   triggerLoadCountryDetails$ = this.triggerLoadCountryDetails.asObservable();
 
-  loadCountryDetails(countryId: number) {
-    this.triggerLoadCountryDetails.next(countryId);
+  loadCountryDetails() {
+    this.triggerLoadCountryDetails.next();
   }
 
-  private triggerLoadCityDetails = new Subject<number>();
+  private triggerLoadCityDetails = new Subject<void>();
 
   triggerLoadCityDetails$ = this.triggerLoadCityDetails.asObservable();
 
-  loadCityDetails(cityId: number) {
-    this.triggerLoadCityDetails.next(cityId);
+  loadCityDetails() {
+    this.triggerLoadCityDetails.next();
   }
 }
