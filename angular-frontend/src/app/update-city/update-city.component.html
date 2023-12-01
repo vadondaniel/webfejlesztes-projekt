@@ -11,6 +11,9 @@
       <mat-error *ngIf="cityForm.get('name')?.hasError('required') && cityForm.get('name')?.touched">
         Name is required.
       </mat-error>
+      <mat-error *ngIf="cityForm.get('name')?.hasError('minlength') && cityForm.get('name')?.touched">
+        Name must be at least 3 characters long.
+      </mat-error>
     </mat-form-field>
 
     <mat-form-field appearance="fill">
