@@ -1,32 +1,43 @@
 <mat-card class="city-form-card">
-    <form [formGroup]="cityForm" (ngSubmit)="onSubmit()" class="city-form" autocomplete="off">
-        <mat-form-field appearance="fill">
-            <mat-label>City ID</mat-label>
-            <input matInput formControlName="id" type="number" readonly>
-        </mat-form-field>
+  <form [formGroup]="cityForm" (ngSubmit)="onSubmit()" class="city-form" autocomplete="off">
+    <mat-form-field appearance="fill">
+      <mat-label>City ID</mat-label>
+      <input matInput formControlName="id" type="number" readonly>
+    </mat-form-field>
 
-        <mat-form-field appearance="fill">
-            <mat-label>City Name</mat-label>
-            <input matInput formControlName="name" autocomplete="off">
-        </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>City Name</mat-label>
+      <input matInput formControlName="name" autocomplete="off">
+      <mat-error *ngIf="cityForm.get('name')?.hasError('required') && cityForm.get('name')?.touched">
+        Name is required.
+      </mat-error>
+    </mat-form-field>
 
-        <mat-form-field appearance="fill">
-            <mat-label>Population</mat-label>
-            <input matInput formControlName="population" type="number">
-        </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Population</mat-label>
+      <input matInput formControlName="population" type="number">
+      <mat-error *ngIf="cityForm.get('population')?.hasError('required') && cityForm.get('population')?.touched">
+        Population is required.
+      </mat-error>
+      <mat-error *ngIf="cityForm.get('population')?.hasError('notPositive') && cityForm.get('population')?.touched">
+        Population must be a positive number.
+      </mat-error>
+    </mat-form-field>
 
-        <mat-form-field appearance="fill">
-            <mat-label>Country</mat-label>
-            <mat-select formControlName="countryId" required>
-              <mat-option *ngFor="let country of countries" [value]="country.id">
-                {{ country.name }}
-              </mat-option>
-            </mat-select>
-            <mat-error *ngIf="cityForm.get('countryId')?.hasError('required') && cityForm.get('countryId')?.touched">
-              Country is required.
-            </mat-error>
-          </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Country</mat-label>
+      <mat-select formControlName="countryId" required>
+        <mat-option *ngFor="let country of countries" [value]="country.id">
+          {{ country.name }}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="cityForm.get('countryId')?.hasError('required') && cityForm.get('countryId')?.touched">
+        Country is required.
+      </mat-error>
+    </mat-form-field>
 
-        <button mat-raised-button color="primary" type="submit" [disabled]="loading || !cityForm.valid">Update City</button>
-    </form>
+    <button mat-raised-button color="primary" type="submit" [disabled]="loading || !cityForm.valid">
+      Update City
+    </button>
+  </form>
 </mat-card>
