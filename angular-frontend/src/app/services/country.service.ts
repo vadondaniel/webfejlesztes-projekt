@@ -18,7 +18,7 @@ export class CountryService {
     return this.http.get<Country[]>(this.baseUrl).pipe(
       map(countries => countries.map(country => ({
         ...country,
-        continent: Continent[country.continent.replace(" ", "") as keyof typeof Continent]
+        continent: Continent[country.continent.replace(" ", "") as keyof typeof Continent] as Continent
       })))
     );
   }
@@ -29,7 +29,7 @@ export class CountryService {
     return this.http.get<Country>(url).pipe(
       map(country => ({
         ...country,
-        continent: Continent[country.continent.replace(" ", "") as keyof typeof Continent]
+        continent: Continent[country.continent.replace(" ", "") as keyof typeof Continent] as Continent
       }))
     );
   }

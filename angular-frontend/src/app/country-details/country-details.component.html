@@ -50,7 +50,7 @@
       </div>
     </td>
     <td style="border: none;">
-      <div>
+      <div *ngIf="country">
         <h2>Update Country</h2>
         <app-update-country [countryId]="country.id"></app-update-country>
       </div>

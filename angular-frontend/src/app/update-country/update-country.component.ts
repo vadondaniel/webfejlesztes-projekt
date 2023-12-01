@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { CountryService } from '../services/country.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Continent } from '../continent';
 
 @Component({
   selector: 'app-update-country',
@@ -14,6 +15,9 @@ export class UpdateCountryComponent implements OnInit {
   countryForm: FormGroup;
 
   loading = false;
+
+  Continent: any = Continent;
+  continentOptions = Object.keys(Continent).filter(key => isNaN(Number(key)));
 
   constructor(private fb: FormBuilder, private countryService: CountryService, private snackBar: MatSnackBar) {
     this.countryForm = this.fb.group({
@@ -30,11 +34,12 @@ export class UpdateCountryComponent implements OnInit {
 
   loadCountry(): void {
     this.countryService.getCountryById(this.countryId).subscribe(country => {
+      const continentName = country.continent.replace(/\s/g, '') as keyof typeof Continent;
       this.countryForm.setValue({
         id: country.id,
         name: country.name,
         population: country.population,
-        continent: country.continent
+        continent: continentName,
       });
     });
   }
