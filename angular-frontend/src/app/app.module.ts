@@ -31,6 +31,7 @@ import { AddCountryComponent } from './add-country/add-country.component';
 import { AddCityComponent } from './add-city/add-city.component';
 import { AddCityToCountryComponent } from './add-city-to-country/add-city-to-country.component';
 import { NavigationComponent } from './navigation/navigation.component';
+import { UpdateCountryComponent } from './update-country/update-country.component';
 
 
 @NgModule({
@@ -43,7 +44,8 @@ import { NavigationComponent } from './navigation/navigation.component';
         AddCountryComponent,
         AddCityComponent,
         NavigationComponent,
-        AddCityToCountryComponent
+        AddCityToCountryComponent,
+        UpdateCountryComponent
     ],
     imports: [
         BrowserModule,

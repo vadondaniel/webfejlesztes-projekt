@@ -38,4 +38,16 @@ export class CountryService {
   addCountry(country: Country): Observable<Country> {
     return this.http.post<Country>(this.baseUrl, country);
   }
+
+  // Update an existing country
+  updateCountry(country: Country): Observable<Country> {
+    const url = `${this.baseUrl}/${country.id}`;
+    return this.http.put<Country>(url, country);
+  }
+
+  // Delete a country by ID
+  deleteCountry(id: number): Observable<Country> {
+    const url = `${this.baseUrl}/${id}`;
+    return this.http.delete<Country>(url);
+  }
 }

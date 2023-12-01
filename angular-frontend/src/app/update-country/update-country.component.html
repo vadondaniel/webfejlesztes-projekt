@@ -1,0 +1,25 @@
+<mat-card class="country-form-card">
+    <form [formGroup]="countryForm" (ngSubmit)="onSubmit()" class="country-form">
+    <mat-form-field appearance="fill">
+        <mat-label>Country ID</mat-label>
+        <input matInput formControlName="id" type="number" readonly>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+        <mat-label>Country Name</mat-label>
+        <input matInput formControlName="name">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+        <mat-label>Population</mat-label>
+        <input matInput formControlName="population" type="number">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+        <mat-label>Continent</mat-label>
+        <input matInput formControlName="continent">
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" type="submit" [disabled]="loading || !countryForm.valid">Update Country</button>
+</form>
+</mat-card>

@@ -1,45 +1,59 @@
-<div *ngIf="country">
-  <div style="display: inline-block;">
-    <table style="border: none;">
-      <tr>
-        <td style="border: none; text-align: right;"><label>ID: </label></td>
-        <td style="border: none;">{{ country.id }}</td>
-      </tr>
-      <tr>
-        <td style="border: none; text-align: right;"><label>Name: </label></td>
-        <td style="border: none;">{{ country.name }}</td>
-      </tr>
-      <tr>
-        <td style="border: none; text-align: right;"><label>Population: </label></td>
-        <td style="border: none;">{{ country.population }}</td>
-      </tr>
-      <tr>
-        <td style="border: none; text-align: right;"><label>Continent: </label></td>
-        <td style="border: none;">{{ country.continent }}</td>
-      </tr>
-    </table>
-  </div>
+<table>
+  <tr>
+    <td style="border: none; display: inline-block;">
+      <div *ngIf="country">
+        <div style="display: inline-block;">
+          <table style="border: none;">
+            <tr>
+              <td style="border: none; text-align: right;"><label>ID: </label></td>
+              <td style="border: none;">{{ country.id }}</td>
+            </tr>
+            <tr>
+              <td style="border: none; text-align: right;"><label>Name: </label></td>
+              <td style="border: none;">{{ country.name }}</td>
+            </tr>
+            <tr>
+              <td style="border: none; text-align: right;"><label>Population: </label></td>
+              <td style="border: none;">{{ country.population }}</td>
+            </tr>
+            <tr>
+              <td style="border: none; text-align: right;"><label>Continent: </label></td>
+              <td style="border: none;">{{ country.continent }}</td>
+            </tr>
+          </table>
+        </div>
 
-  <h2>Cities</h2>
-  <table matSort (matSortChange)="sortData($event)">
-    <thead>
-      <tr>
-        <th mat-sort-header="id">ID</th>
-        <th mat-sort-header="name">Name</th>
-        <th mat-sort-header="population">Population</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let city of sortedCities">
-        <td>{{ city.id }}</td>
-        <td><a [routerLink]="['/cities', city.id]">{{ city.name }}</a></td>
-        <td>{{ city.population }}</td>
-      </tr>
-      <tr *ngIf="sortedCities.length === 0">
-        <td colspan="5">No cities found</td>
-      </tr>
-    </tbody>
-  </table>
+        <h2>Cities</h2>
+        <div style="display: inline-block;">
+          <table matSort (matSortChange)="sortData($event)">
+            <thead>
+              <tr>
+                <th mat-sort-header="id">ID</th>
+                <th mat-sort-header="name">Name</th>
+                <th mat-sort-header="population">Population</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let city of sortedCities">
+                <td>{{ city.id }}</td>
+                <td><a [routerLink]="['/cities', city.id]">{{ city.name }}</a></td>
+                <td>{{ city.population }}</td>
+              </tr>
+              <tr *ngIf="sortedCities.length === 0">
+                <td colspan="5">No cities found</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
 
-  <app-add-city-to-country [countryId]="country.id"></app-add-city-to-country>
-</div>
+        <app-add-city-to-country [countryId]="country.id"></app-add-city-to-country>
+      </div>
+    </td>
+    <td style="border: none;">
+      <div>
+        <h2>Update Country</h2>
+        <app-update-country [countryId]="country.id"></app-update-country>
+      </div>
+    </td>
+  </tr>
+</table>
