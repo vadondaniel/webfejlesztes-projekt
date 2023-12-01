@@ -1,5 +1,5 @@
 <table>
-  <tr>
+  <tr class="no-hover-highlight">
     <td style="border: none; display: inline-block;">
       <div *ngIf="country">
         <div style="display: inline-block;">
@@ -49,7 +49,7 @@
         <app-add-city-to-country [countryId]="country.id"></app-add-city-to-country>
       </div>
     </td>
-    <td style="border: none;">
+    <td style="border: none; text-align: center;">
       <div *ngIf="country">
         <h2>Update Country</h2>
         <app-update-country [countryId]="country.id"></app-update-country>
