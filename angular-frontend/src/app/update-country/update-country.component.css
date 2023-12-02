@@ -1,13 +1,12 @@
 .country-form-card {
     max-width: 400px;
     margin: 20px auto;
-    padding: 20px;
 }
 
 .country-form {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 10px;
 }
 
 button {
