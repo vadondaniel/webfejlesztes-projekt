@@ -17,9 +17,9 @@
                 </tr>
               </thead>
               <tbody>
-                <tr *ngFor="let country of sortedCountries">
+                <tr *ngFor="let country of sortedCountries" [routerLink]="['/countries', country.id]" style="cursor: pointer;">
                   <td>{{ country.id }}</td>
-                  <td><a [routerLink]="['/countries', country.id]">{{ country.name }}</a></td>
+                  <td>{{ country.name }}</td>
                   <td>{{ country.population }}</td>
                   <td>{{ country.continent }}</td>
                   <td>{{ country.cities.length }}</td>

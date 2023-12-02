@@ -37,9 +37,9 @@
                 </tr>
               </thead>
               <tbody>
-                <tr *ngFor="let city of sortedCities">
+                <tr *ngFor="let city of sortedCities" [routerLink]="['/cities', city.id]" style="cursor: pointer;">
                   <td>{{ city.id }}</td>
-                  <td><a [routerLink]="['/cities', city.id]">{{ city.name }}</a></td>
+                  <td>{{ city.name }}</td>
                   <td>{{ city.population }}</td>
                 </tr>
                 <tr *ngIf="sortedCities.length === 0">
