@@ -12,11 +12,10 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class UpdateCityComponent implements OnInit {
   @Input() cityId: any;
-
   cityForm: FormGroup;
   countries: any[] = [];
-
   loading = false;
+  filteredOptions: any[] = [];
 
   constructor(private fb: FormBuilder, private cityService: CityService, private countryService: CountryService, private snackBar: MatSnackBar, private reloadListService: ReloadListService) {
     this.cityForm = this.fb.group({
@@ -27,24 +26,49 @@ export class UpdateCityComponent implements OnInit {
     });
   }
 
+  filter() {
+    let filterValue = this.cityForm.get('countryId')?.value;
+    if (filterValue && typeof filterValue === 'object') {
+      filterValue = filterValue.name;
+    }
+    if (typeof filterValue === 'string') {
+      this.filteredOptions = this.countries.filter(option => option.name.toLowerCase().includes(filterValue.toLowerCase()));
+    } else {
+      this.filteredOptions = this.countries;
+    }
+  }
+
+  displayCountry(option: any): string {
+    return option && typeof option === 'object' ? option.name : '';
+  }
+
+  validateCountry() {
+    const countryControl = this.cityForm.get('countryId');
+    if (countryControl && typeof countryControl.value !== 'object') {
+      countryControl.reset();
+    }
+  }
+
   ngOnInit(): void {
-    this.loadCity();
     this.loadCountries();
   }
 
   loadCountries(): void {
     this.countryService.getCountries().subscribe(data => {
       this.countries = data.sort((a, b) => a.name.localeCompare(b.name));
+      this.filteredOptions = this.countries.map(country => country.name);
     });
+    this.loadCity();
   }
 
   loadCity(): void {
     this.cityService.getCityById(this.cityId).subscribe(city => {
+      const country = this.countries.find(c => c.id === city.countryId);
       this.cityForm.setValue({
         id: city.id,
         name: city.name,
         population: city.population,
-        countryId: city.countryId,
+        countryId: country,
       });
     });
   }
@@ -52,7 +76,10 @@ export class UpdateCityComponent implements OnInit {
   onSubmit() {
     this.loading = true;
     if (this.cityForm.valid) {
-      const updatedCity = this.cityForm.value;
+      const updatedCity = { ...this.cityForm.value };
+      if (updatedCity.countryId && typeof updatedCity.countryId === 'object') {
+        updatedCity.countryId = updatedCity.countryId.id;
+      }
       this.cityService.updateCity(updatedCity).subscribe({
         next: () => {
           console.log('City updated successfully');
