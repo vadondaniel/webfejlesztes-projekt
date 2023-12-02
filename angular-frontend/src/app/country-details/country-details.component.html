@@ -4,7 +4,7 @@
       <mat-card>
         <mat-card-content style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
           <div style="display: inline-block;">
-            <table style="border: none; background-color: #424242;">
+            <table class="darker-hover-highlight" style="border: none; background-color: #424242;">
               <tr>
                 <td style="border: none; text-align: right;"><label>ID: </label></td>
                 <td style="border: none;">{{ country.id }}</td>
@@ -47,11 +47,14 @@
             </table>
           </div>
 
-          <div>
-            <app-add-city-to-country [countryId]="country.id"></app-add-city-to-country>
-          </div>
         </mat-card-content>
       </mat-card>
+    </td>
+    <td style="border: none; text-align: center; vertical-align: top;">
+      <div *ngIf="country" style="position: sticky; top: 70px; height: 60vh; overflow-y: auto;">
+        <h2>Add new city</h2>
+        <app-add-city-to-country [countryId]="country.id"></app-add-city-to-country>
+      </div>
     </td>
     <td style="border: none; text-align: center; vertical-align: top;">
       <div *ngIf="country" style="position: sticky; top: 70px; height: 60vh; overflow-y: auto;">

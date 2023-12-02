@@ -11,3 +11,7 @@ label {
 .no-hover-highlight:hover {
     background-color: inherit !important;
 }
+
+.darker-hover-highlight tr:hover {
+    background-color: #303030; /* darker grey */
+}
