@@ -36,3 +36,7 @@
     </td>
   </tr>
 </table>
+
+<mat-card *ngIf="!city" style="display: inline-block; text-align: center; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); padding: 20px; padding-bottom: 10px;">
+  <h2>City not found in the database with the specified ID.</h2>
+</mat-card>
