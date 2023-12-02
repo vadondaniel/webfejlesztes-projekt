@@ -51,13 +51,13 @@
       </mat-card>
     </td>
     <td style="border: none; text-align: center; vertical-align: top;">
-      <div *ngIf="country" style="position: sticky; top: 70px; height: 60vh; overflow-y: auto;">
+      <div *ngIf="country" style="position: sticky; top: 70px;">
         <h2>Add new city</h2>
         <app-add-city-to-country [countryId]="country.id"></app-add-city-to-country>
       </div>
     </td>
     <td style="border: none; text-align: center; vertical-align: top;">
-      <div *ngIf="country" style="position: sticky; top: 70px; height: 60vh; overflow-y: auto;">
+      <div *ngIf="country" style="position: sticky; top: 70px;">
         <h2>Update Country</h2>
         <app-update-country [countryId]="country.id"></app-update-country>
         <app-delete-country [countryId]="country.id"></app-delete-country>
