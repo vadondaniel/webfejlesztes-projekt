@@ -28,7 +28,7 @@ export class CityListComponent {
     this.cityService.getCities().subscribe(data => {
       this.cities = data;
       this.sortData(this.sort);
-      if (data) {
+      if (data && !this.sortedCities) {
         this.sortedCities = [];
       }
     });

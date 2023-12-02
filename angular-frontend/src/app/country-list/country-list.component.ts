@@ -31,7 +31,7 @@ export class CountryListComponent implements OnInit {
     this.countryService.getCountries().subscribe(data => {
       this.countries = data;
       this.sortData(this.sort);
-      if (data) {
+      if (data && !this.sortedCountries) {
         this.sortedCountries = [];
       }
     });
