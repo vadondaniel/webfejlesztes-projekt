@@ -60,6 +60,7 @@
       <div *ngIf="country" style="position: sticky; top: 70px; height: 60vh; overflow-y: auto;">
         <h2>Update Country</h2>
         <app-update-country [countryId]="country.id"></app-update-country>
+        <app-delete-country [countryId]="country.id"></app-delete-country>
       </div>
     </td>
   </tr>

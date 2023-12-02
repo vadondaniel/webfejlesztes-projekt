@@ -1,5 +1,6 @@
 <h2 mat-dialog-title>Delete {{data.type}}</h2>
-<mat-dialog-content>Are you sure you want to delete this {{data.type}}?</mat-dialog-content>
+<mat-dialog-content *ngIf="data.type != 'country'">Are you sure you want to delete this {{data.type}}?</mat-dialog-content>
+<mat-dialog-content *ngIf="data.type === 'country'">Are you sure you want to delete this country and all of its associated cities?</mat-dialog-content>
 <mat-dialog-actions>
     <button mat-button mat-dialog-close>No</button>
     <!-- The mat-dialog-close directive optionally accepts a value as a result for the dialog. -->
