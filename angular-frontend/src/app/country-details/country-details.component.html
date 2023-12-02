@@ -58,6 +58,8 @@
   </tr>
 </table>
 
-<mat-card *ngIf="!country" style="display: inline-block; text-align: center; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); padding: 20px; padding-bottom: 10px;">
-  <h2>Country not found in the database with the specified ID.</h2>
+<mat-card *ngIf="!country" style="display: inline-block; text-align: center; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+  <mat-card-content>
+    <h2>Country not found in the database with the specified ID.</h2>
+  </mat-card-content>
 </mat-card>
