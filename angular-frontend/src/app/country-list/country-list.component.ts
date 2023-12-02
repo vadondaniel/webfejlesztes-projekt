@@ -14,8 +14,8 @@ export class CountryListComponent implements OnInit {
   sort: Sort = { active: 'id', direction: 'asc' };
   countries: Country[] | undefined;
   sortedCountries: Country[] | undefined;
-
   Continent: any = Continent;
+  loaded = false;
 
   constructor(private countryService: CountryService, private reloadListService: ReloadListService) {
     this.reloadListService.triggerLoadCountries$.subscribe(() => {
@@ -28,11 +28,17 @@ export class CountryListComponent implements OnInit {
   }
 
   loadCountries() {
-    this.countryService.getCountries().subscribe(data => {
-      this.countries = data;
-      this.sortData(this.sort);
-      if (data && !this.sortedCountries) {
-        this.sortedCountries = [];
+    this.countryService.getCountries().subscribe({
+      next: (data) => {
+        this.countries = data;
+        this.sortData(this.sort);
+        if (data && !this.sortedCountries) {
+          this.sortedCountries = [];
+        }
+        this.loaded = true;
+      },
+      error: () => {
+        this.loaded = true;
       }
     });
   }

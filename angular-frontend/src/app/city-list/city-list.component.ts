@@ -13,6 +13,7 @@ export class CityListComponent {
   sort: Sort = { active: 'id', direction: 'asc' };
   cities: City[] | undefined;
   sortedCities: City[] | undefined;
+  loaded = false;
 
   constructor(private cityService: CityService, private reloadListService: ReloadListService) {
     this.reloadListService.triggerLoadCities$.subscribe(() => {
@@ -25,11 +26,17 @@ export class CityListComponent {
   }
 
   loadCities() {
-    this.cityService.getCities().subscribe(data => {
-      this.cities = data;
-      this.sortData(this.sort);
-      if (data && !this.sortedCities) {
-        this.sortedCities = [];
+    this.cityService.getCities().subscribe({
+      next: (data) => {
+        this.cities = data;
+        this.sortData(this.sort);
+        if (data && !this.sortedCities) {
+          this.sortedCities = [];
+        }
+        this.loaded = true;
+      },
+      error: () => {
+        this.loaded = true;
       }
     });
   }

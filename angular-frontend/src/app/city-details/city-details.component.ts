@@ -13,12 +13,13 @@ import { ActivatedRoute } from '@angular/router';
 export class CityDetailsComponent implements OnInit {
   city!: City;
   country!: Country;
+  loaded = false;
 
   constructor(private cityService: CityService, private countryService: CountryService, private reloadService: ReloadListService, private route: ActivatedRoute) {
     this.reloadService.triggerLoadCityDetails$.subscribe(() => {
       this.loadCityDetails(this.city.id);
     });
-   }
+  }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
@@ -28,9 +29,15 @@ export class CityDetailsComponent implements OnInit {
   }
 
   loadCityDetails(cityId: number) {
-    this.cityService.getCityById(cityId).subscribe(data => {
-      this.city = data;
-      this.loadCountryDetails(this.city.countryId);
+    this.cityService.getCityById(cityId).subscribe({
+      next: (data) => {
+        this.city = data;
+        this.loadCountryDetails(this.city.countryId);
+        this.loaded = true;
+      },
+      error: () => {
+        this.loaded = true;
+      }
     });
   }
 
