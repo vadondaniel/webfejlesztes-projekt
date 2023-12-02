@@ -12,7 +12,7 @@ import { Sort } from '@angular/material/sort';
 export class CityListComponent {
   sort: Sort = { active: 'id', direction: 'asc' };
   cities: City[] | undefined;
-  sortedCities: City[] = [];
+  sortedCities: City[] | undefined;
 
   constructor(private cityService: CityService, private reloadListService: ReloadListService) {
     this.reloadListService.triggerLoadCities$.subscribe(() => {
@@ -28,6 +28,9 @@ export class CityListComponent {
     this.cityService.getCities().subscribe(data => {
       this.cities = data;
       this.sortData(this.sort);
+      if (data) {
+        this.sortedCities = [];
+      }
     });
   }
 

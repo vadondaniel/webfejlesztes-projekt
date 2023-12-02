@@ -13,7 +13,7 @@ import { Sort } from '@angular/material/sort';
 export class CountryListComponent implements OnInit {
   sort: Sort = { active: 'id', direction: 'asc' };
   countries: Country[] | undefined;
-  sortedCountries: Country[] = [];
+  sortedCountries: Country[] | undefined;
 
   Continent: any = Continent;
 
@@ -31,6 +31,9 @@ export class CountryListComponent implements OnInit {
     this.countryService.getCountries().subscribe(data => {
       this.countries = data;
       this.sortData(this.sort);
+      if (data) {
+        this.sortedCountries = [];
+      }
     });
   }
 
