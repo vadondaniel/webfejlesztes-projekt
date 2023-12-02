@@ -1,6 +1,6 @@
 <mat-card class="city-form-card">
   <mat-card-content>
-    <form [formGroup]="cityForm" (ngSubmit)="onSubmit()" class="city-form">
+    <form [formGroup]="cityForm" (ngSubmit)="onSubmit()" #formDirective="ngForm" class="city-form">
       <mat-form-field appearance="fill" class="full-width">
         <mat-label>Name</mat-label>
         <input matInput type="text" formControlName="name" required>

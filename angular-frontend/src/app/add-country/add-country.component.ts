@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import { CountryService } from '../services/country.service';
 import { ReloadListService } from '../services/reload-list.service';
 import { Continent } from '../continent';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { finalize } from 'rxjs';
 
 @Component({
   selector: 'app-add-country',
@@ -11,12 +12,10 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   styleUrls: ['./add-country.component.css']
 })
 export class AddCountryComponent implements OnInit {
-
+  @ViewChild('formDirective') private formDirective!: NgForm;
   Continent: any = Continent;
-
   countryForm: FormGroup;
   continentOptions = Object.keys(Continent).filter(key => isNaN(Number(key)));
-
   loading = false;
 
   constructor(private fb: FormBuilder, private countryService: CountryService, private snackBar: MatSnackBar, private reloadListService: ReloadListService) {
@@ -34,35 +33,24 @@ export class AddCountryComponent implements OnInit {
     this.loading = true;
     if (this.countryForm.valid) {
       const newCountry = this.countryForm.value;
-      this.countryService.addCountry(newCountry).subscribe(() => {
-        console.log('Country added successfully');
-        this.countryForm.reset({
-          name: '',
-          population: '',
-          continent: null
-        });
-        Object.keys(this.countryForm.controls).forEach(key => {
-          const control = this.countryForm.get(key);
-          if (control) {
-            control.markAsPristine();
-            control.markAsUntouched();
-            control.setErrors(null);
-          }
-        });
-        this.reloadListService.loadCountries();
-        this.snackBar.open('Country added successfully', 'Close', {
-          duration: 3000
-        });
-        this.loading = false;
-      }, error => {
-        console.error('Error:', error);
-        this.snackBar.open('Error adding country', 'Close', {
-          duration: 3000
-        });
-        this.loading = false;
+      this.countryService.addCountry(newCountry).pipe(
+        finalize(() => this.loading = false)
+      ).subscribe({
+        next: () => {
+          console.log('Country added successfully');
+          this.formDirective.resetForm();
+          this.reloadListService.loadCountries();
+          this.snackBar.open('Country added successfully', 'Close', {
+            duration: 3000
+          });
+        },
+        error: error => {
+          console.error('Error:', error);
+          this.snackBar.open('Error adding country', 'Close', {
+            duration: 3000
+          });
+        }
       });
-    } else {
-      this.loading = false;
     }
   }
 }

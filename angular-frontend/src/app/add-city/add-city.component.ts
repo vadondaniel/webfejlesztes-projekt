@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import { CountryService } from '../services/country.service';
 import { ReloadListService } from '../services/reload-list.service';
 import { CityService } from '../services/city.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { finalize } from 'rxjs';
 
 @Component({
   selector: 'app-add-city',
@@ -11,6 +12,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   styleUrls: ['./add-city.component.css']
 })
 export class AddCityComponent implements OnInit {
+  @ViewChild('formDirective') private formDirective!: NgForm;
   cityForm: FormGroup;
   countries: any[] = [];
   loading = false;
@@ -65,38 +67,24 @@ export class AddCityComponent implements OnInit {
       if (newCity.countryId && typeof newCity.countryId === 'object') {
         newCity.countryId = newCity.countryId.id;
       }
-      this.cityService.addCity(newCity).subscribe({
+      this.cityService.addCity(newCity).pipe(
+        finalize(() => this.loading = false)
+        ).subscribe({
         next: () => {
           console.log('City added successfully');
-          this.cityForm.reset({
-            name: '',
-            population: '',
-            countryId: null
-          });
-          Object.keys(this.cityForm.controls).forEach(key => {
-            const control = this.cityForm.get(key);
-            if (control) {
-              control.markAsPristine();
-              control.markAsUntouched();
-              control.setErrors(null);
-            }
-          });
+          this.formDirective.resetForm();
           this.reloadListService.loadCities();
           this.snackBar.open('City added successfully', 'Close', {
             duration: 3000
           });
-          this.loading = false;
         },
         error: error => {
           console.error('Error:', error);
           this.snackBar.open('Error adding city', 'Close', {
             duration: 3000
           });
-          this.loading = false;
         }
       });
-    } else {
-      this.loading = false;
     }
   }
 }

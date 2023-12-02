@@ -1,34 +1,31 @@
 <mat-card class="city-form-card">
-    <mat-card-content>
-        <form [formGroup]="cityForm" (ngSubmit)="onSubmit()" class="city-form">
-            <mat-form-field appearance="fill" class="full-width">
-                <mat-label>Name</mat-label>
-                <input matInput type="text" formControlName="name" required>
-                <mat-error *ngIf="cityForm.get('name')?.hasError('required') && cityForm.get('name')?.touched">
-                    Name is required.
-                </mat-error>
-                <mat-error *ngIf="cityForm.get('name')?.hasError('minlength') && cityForm.get('name')?.touched">
-                    Name must be at least 3 characters long.
-                </mat-error>
-            </mat-form-field>
+  <mat-card-content>
+    <form [formGroup]="cityForm" (ngSubmit)="onSubmit()" #formDirective="ngForm" class="city-form">
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Name</mat-label>
+        <input matInput type="text" formControlName="name" required>
+        <mat-error *ngIf="cityForm.get('name')?.hasError('required') && cityForm.get('name')?.touched">
+          Name is required.
+        </mat-error>
+        <mat-error *ngIf="cityForm.get('name')?.hasError('minlength') && cityForm.get('name')?.touched">
+          Name must be at least 3 characters long.
+        </mat-error>
+      </mat-form-field>
 
-            <mat-form-field appearance="fill" class="full-width">
-                <mat-label>Population</mat-label>
-                <input matInput type="number" formControlName="population" required>
-                <mat-error
-                    *ngIf="cityForm.get('population')?.hasError('required') && cityForm.get('population')?.touched">
-                    Population is required.
-                </mat-error>
-                <mat-error
-                    *ngIf="cityForm.get('population')?.hasError('notPositive') && cityForm.get('population')?.touched">
-                    Population must be a positive number.
-                </mat-error>
-            </mat-form-field>
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Population</mat-label>
+        <input matInput type="number" formControlName="population" required>
+        <mat-error *ngIf="cityForm.get('population')?.hasError('required') && cityForm.get('population')?.touched">
+          Population is required.
+        </mat-error>
+        <mat-error *ngIf="cityForm.get('population')?.hasError('notPositive') && cityForm.get('population')?.touched">
+          Population must be a positive number.
+        </mat-error>
+      </mat-form-field>
 
-            <button mat-raised-button color="primary" type="submit" [disabled]="cityForm.invalid"
-                class="mat-button-base">
-                Add City
-            </button>
-        </form>
-    </mat-card-content>
+      <button mat-raised-button color="primary" type="submit" [disabled]="cityForm.invalid" class="mat-button-base">
+        Add City
+      </button>
+    </form>
+  </mat-card-content>
 </mat-card>
