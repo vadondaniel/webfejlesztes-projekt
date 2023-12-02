@@ -22,6 +22,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatCardModule } from '@angular/material/card';
 import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 import { MatDialogModule } from '@angular/material/dialog';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
 
 import { CountryListComponent } from './country-list/country-list.component';
 import { CityListComponent } from './city-list/city-list.component';
@@ -78,7 +79,8 @@ import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-
         MatSelectModule,
         MatCardModule,
         MatProgressSpinnerModule,
-        MatDialogModule
+        MatDialogModule,
+        MatAutocompleteModule
     ],
     providers: [],
     bootstrap: [AppComponent]
