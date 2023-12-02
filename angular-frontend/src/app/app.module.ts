@@ -21,6 +21,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatCardModule } from '@angular/material/card';
 import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
+import { MatDialogModule } from '@angular/material/dialog';
 
 import { CountryListComponent } from './country-list/country-list.component';
 import { CityListComponent } from './city-list/city-list.component';
@@ -33,6 +34,9 @@ import { AddCityToCountryComponent } from './add-city-to-country/add-city-to-cou
 import { NavigationComponent } from './navigation/navigation.component';
 import { UpdateCountryComponent } from './update-country/update-country.component';
 import { UpdateCityComponent } from './update-city/update-city.component';
+import { DeleteCityComponent } from './delete-city/delete-city.component';
+import { DeleteCountryComponent } from './delete-country/delete-country.component';
+import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-dialog.component';
 
 
 @NgModule({
@@ -47,7 +51,10 @@ import { UpdateCityComponent } from './update-city/update-city.component';
         NavigationComponent,
         AddCityToCountryComponent,
         UpdateCountryComponent,
-        UpdateCityComponent
+        UpdateCityComponent,
+        DeleteCityComponent,
+        DeleteCountryComponent,
+        ConfirmationDialogComponent
     ],
     imports: [
         BrowserModule,
@@ -70,7 +77,8 @@ import { UpdateCityComponent } from './update-city/update-city.component';
         MatInputModule,
         MatSelectModule,
         MatCardModule,
-        MatProgressSpinnerModule
+        MatProgressSpinnerModule,
+        MatDialogModule
     ],
     providers: [],
     bootstrap: [AppComponent]
