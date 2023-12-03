@@ -18,7 +18,12 @@ export class AddCityComponent implements OnInit {
   loading = false;
   filteredOptions: any[] = [];
 
-  constructor(private fb: FormBuilder, private countryService: CountryService, private cityService: CityService, private snackBar: MatSnackBar, private reloadListService: ReloadListService) {
+  constructor(
+    private fb: FormBuilder,
+    private countryService: CountryService,
+    private cityService: CityService,
+    private snackBar: MatSnackBar,
+    private reloadListService: ReloadListService) {
     this.cityForm = this.fb.group({
       name: ['', [Validators.required, Validators.minLength(3)]],
       population: ['', [Validators.required, positiveNumberValidator]],

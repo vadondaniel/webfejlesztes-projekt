@@ -17,7 +17,9 @@ export class CountryListComponent implements OnInit {
   Continent: any = Continent;
   loaded = false;
 
-  constructor(private countryService: CountryService, private reloadListService: ReloadListService) {
+  constructor(
+    private countryService: CountryService,
+    private reloadListService: ReloadListService) {
     this.reloadListService.triggerLoadCountries$.subscribe(() => {
       this.loadCountries();
     });

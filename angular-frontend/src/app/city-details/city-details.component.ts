@@ -15,7 +15,11 @@ export class CityDetailsComponent implements OnInit {
   country!: Country;
   loaded = false;
 
-  constructor(private cityService: CityService, private countryService: CountryService, private reloadService: ReloadListService, private route: ActivatedRoute) {
+  constructor(
+    private cityService: CityService,
+    private countryService: CountryService,
+    private reloadService: ReloadListService,
+    private route: ActivatedRoute) {
     this.reloadService.triggerLoadCityDetails$.subscribe(() => {
       this.loadCityDetails(this.city.id);
     });

@@ -15,7 +15,9 @@ export class CityListComponent {
   sortedCities: City[] | undefined;
   loaded = false;
 
-  constructor(private cityService: CityService, private reloadListService: ReloadListService) {
+  constructor(
+    private cityService: CityService,
+    private reloadListService: ReloadListService) {
     this.reloadListService.triggerLoadCities$.subscribe(() => {
       this.loadCities();
     });

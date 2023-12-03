@@ -20,7 +20,11 @@ export class UpdateCountryComponent implements OnInit {
   Continent: any = Continent;
   continentOptions = Object.keys(Continent).filter(key => isNaN(Number(key)));
 
-  constructor(private fb: FormBuilder, private countryService: CountryService, private snackBar: MatSnackBar, private reloadListService: ReloadListService) {
+  constructor(
+    private fb: FormBuilder,
+    private countryService: CountryService,
+    private snackBar: MatSnackBar,
+    private reloadListService: ReloadListService) {
     this.countryForm = this.fb.group({
       id: [null, Validators.required],
       name: ['', [Validators.required, Validators.minLength(3)]],

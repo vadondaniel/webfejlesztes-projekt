@@ -18,7 +18,11 @@ export class AddCountryComponent implements OnInit {
   continentOptions = Object.keys(Continent).filter(key => isNaN(Number(key)));
   loading = false;
 
-  constructor(private fb: FormBuilder, private countryService: CountryService, private snackBar: MatSnackBar, private reloadListService: ReloadListService) {
+  constructor(
+    private fb: FormBuilder,
+    private countryService: CountryService,
+    private snackBar: MatSnackBar,
+    private reloadListService: ReloadListService) {
     this.countryForm = this.fb.group({
       name: ['', [Validators.required, Validators.minLength(3)]],
       population: ['', [Validators.required, positiveNumberValidator]],

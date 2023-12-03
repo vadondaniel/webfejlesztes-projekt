@@ -16,7 +16,10 @@ export class CountryDetailsComponent implements OnInit {
   sortedCities: City[] = [];
   loaded = false;
 
-  constructor(private countryService: CountryService, private route: ActivatedRoute, private reloadListService: ReloadListService) {
+  constructor(
+    private countryService: CountryService,
+    private route: ActivatedRoute,
+    private reloadListService: ReloadListService) {
     this.reloadListService.triggerLoadCountryDetails$.subscribe(() => {
       this.loadCountryDetails(this.country.id);
     });
