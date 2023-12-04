@@ -1,7 +1,7 @@
-package hu.unideb.ik.countries.controller;
+package hu.unideb.inf.controller;
 
-import hu.unideb.ik.countries.entity.Country;
-import hu.unideb.ik.countries.service.CountryService;
+import hu.unideb.inf.entity.Country;
+import hu.unideb.inf.service.CountryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/api/countries")
 public class CountryController {

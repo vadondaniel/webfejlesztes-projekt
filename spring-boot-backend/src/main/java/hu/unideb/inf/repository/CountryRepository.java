@@ -1,6 +1,6 @@
-package hu.unideb.ik.countries.repository;
+package hu.unideb.inf.repository;
 
-import hu.unideb.ik.countries.entity.Country;
+import hu.unideb.inf.entity.Country;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface CountryRepository extends JpaRepository<Country, Long> {

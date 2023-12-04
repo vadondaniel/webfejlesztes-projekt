@@ -1,7 +1,7 @@
-package hu.unideb.ik.countries.entity;
+package hu.unideb.inf.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import jakarta.persistence.*;
+import javax.persistence.*;
 
 @Entity
 public class City {
@@ -17,10 +17,6 @@ public class City {
 
     public Long getId() {
         return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getName() {
@@ -51,13 +47,13 @@ public class City {
     @ManyToOne
     @JoinColumn(name = "country_id", insertable = false, updatable = false)
     @JsonIgnore
-    private hu.unideb.ik.countries.entity.Country country;
+    private Country country;
 
-    public hu.unideb.ik.countries.entity.Country getCountry() {
+    public Country getCountry() {
         return country;
     }
 
-    public void setCountry(hu.unideb.ik.countries.entity.Country country) {
+    public void setCountry(Country country) {
         this.country = country;
         this.countryId = country != null ? country.getId() : null;
     }

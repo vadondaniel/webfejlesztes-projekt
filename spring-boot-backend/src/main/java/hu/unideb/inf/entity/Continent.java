@@ -1,4 +1,4 @@
-package hu.unideb.ik.countries.entity;
+package hu.unideb.inf.entity;
 
 public enum Continent {
     Africa,

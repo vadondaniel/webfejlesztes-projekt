@@ -1,7 +1,7 @@
-package hu.unideb.ik.countries.service;
+package hu.unideb.inf.service;
 
-import hu.unideb.ik.countries.entity.City;
-import hu.unideb.ik.countries.repository.CityRepository;
+import hu.unideb.inf.entity.City;
+import hu.unideb.inf.repository.CityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

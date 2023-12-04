@@ -1,12 +1,13 @@
-package hu.unideb.ik.countries.entity;
+package hu.unideb.inf.entity;
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 import java.util.List;
 
 @Entity
 public class Country {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", updatable = false, nullable = false)
     private Long id;
 
     private String name;
@@ -19,10 +20,6 @@ public class Country {
 
     public Long getId() {
         return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getName() {
