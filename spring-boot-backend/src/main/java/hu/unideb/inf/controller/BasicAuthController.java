@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import hu.unideb.inf.bean.AuthenticationBean;
 
-@CrossOrigin(origins="http://localhost:4200")
 @RestController
 @RequestMapping("/api")
 public class BasicAuthController {
@@ -15,5 +14,5 @@ public class BasicAuthController {
 	@GetMapping(path = "/basicauth")
 	public AuthenticationBean authenticationBean() {
 		return new AuthenticationBean("You are authenticated");
-	}	
+	}
 }

@@ -4,14 +4,17 @@ import { Observable } from 'rxjs';
 import { Country } from '../models';
 import { map } from 'rxjs/operators';
 import { Continent } from '../continent';
+import { ConfigService } from './config.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CountryService {
-  private baseUrl = 'http://localhost:8080/api/countries';
+  private baseUrl: string;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private configService: ConfigService) {
+    this.baseUrl = `${this.configService.basePath}/countries`;
+   }
 
   // Fetch all countries
   getCountries(): Observable<Country[]> {

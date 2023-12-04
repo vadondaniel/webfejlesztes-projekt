@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
+import { ConfigService } from './config.service';
 
 @Injectable({
     providedIn: 'root'
@@ -13,13 +14,13 @@ export class AuthenticationService {
     public username: string | null;
     public password: string | null;
 
-    constructor(private http: HttpClient) {
+    constructor(private http: HttpClient, private configService: ConfigService) {
         this.username = sessionStorage.getItem(this.USER_NAME_SESSION_ATTRIBUTE_NAME);
         this.password = sessionStorage.getItem('password'); // Assuming you also store the password in sessionStorage
     }
 
     authenticationService(username: string, password: string) {
-        return this.http.get(`http://localhost:8080/api/basicauth`,
+        return this.http.get(`${this.configService.basePath}/basicauth`,
             { headers: { authorization: this.createBasicAuthToken(username, password) } }).pipe(map((_) => {
                 this.username = username;
                 this.password = password;
