@@ -3,6 +3,7 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 import { Router } from '@angular/router';
+import { AuthenticationService } from '../services/auth.service';
 
 @Component({
   selector: 'app-navigation',
@@ -18,7 +19,7 @@ export class NavigationComponent {
       shareReplay()
     );
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, public authenticationService: AuthenticationService) { }
 
   getNavigationText(): string {
     if (this.router.url.startsWith('/countries/') && this.router.url.split('/').length > 2) {

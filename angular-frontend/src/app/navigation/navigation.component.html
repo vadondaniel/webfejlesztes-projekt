@@ -2,9 +2,10 @@
   <mat-sidenav #drawer class="sidenav" fixedInViewport [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
     [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false">
     <mat-toolbar>Menu</mat-toolbar>
-    <mat-nav-list>
+    <mat-nav-list *ngIf="authenticationService.isUserLoggedIn()">
       <a mat-list-item href="/countries">Countries</a>
       <a mat-list-item href="/cities">Cities</a>
+      <a mat-list-item (click)="authenticationService.logout()" routerLink="/login">Logout</a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>

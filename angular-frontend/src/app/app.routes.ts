@@ -4,13 +4,16 @@ import { CountryListComponent } from './country-list/country-list.component';
 import { CountryDetailsComponent } from './country-details/country-details.component';
 import { CityListComponent } from './city-list/city-list.component';
 import { CityDetailsComponent } from './city-details/city-details.component';
+import { LoginComponent } from './login/login.component';
+import { AuthGuard } from './auth-guard';
 
 export const routes: Routes = [
-    { path: 'countries', component: CountryListComponent },
-    { path: 'countries/:id', component: CountryDetailsComponent },
-    { path: 'cities', component: CityListComponent },
-    { path: 'cities/:id', component: CityDetailsComponent },
+    { path: 'countries', component: CountryListComponent, canActivate: [AuthGuard] },
+    { path: 'countries/:id', component: CountryDetailsComponent, canActivate: [AuthGuard] },
+    { path: 'cities', component: CityListComponent, canActivate: [AuthGuard] },
+    { path: 'cities/:id', component: CityDetailsComponent, canActivate: [AuthGuard] },
     { path: '', redirectTo: '/countries', pathMatch: 'full' },
+    { path: 'login', component: LoginComponent },
 ];
 
 @NgModule({

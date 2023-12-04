@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app.routes';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -38,7 +38,9 @@ import { UpdateCityComponent } from './update-city/update-city.component';
 import { DeleteCityComponent } from './delete-city/delete-city.component';
 import { DeleteCountryComponent } from './delete-country/delete-country.component';
 import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-dialog.component';
+import { LoginComponent } from './login/login.component';
 
+import { HttpInterceptorService } from './services/http-interceptor.service';
 
 @NgModule({
     declarations: [
@@ -55,7 +57,8 @@ import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-
         UpdateCityComponent,
         DeleteCityComponent,
         DeleteCountryComponent,
-        ConfirmationDialogComponent
+        ConfirmationDialogComponent,
+        LoginComponent
     ],
     imports: [
         BrowserModule,
@@ -82,7 +85,13 @@ import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-
         MatDialogModule,
         MatAutocompleteModule
     ],
-    providers: [],
+    providers: [
+        {
+          provide: HTTP_INTERCEPTORS,
+          useClass: HttpInterceptorService,
+          multi: true
+        }
+    ],
     bootstrap: [AppComponent]
 })
 export class AppModule { }
