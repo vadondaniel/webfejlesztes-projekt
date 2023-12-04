@@ -46,8 +46,10 @@ export class CityDetailsComponent implements OnInit {
   }
 
   loadCountryDetails(countryId: number) {
-    this.countryService.getCountryById(countryId).subscribe(data => {
-      this.country = data;
-    });
+    if (this.countryService.getCountryById(countryId)) {
+      this.countryService.getCountryById(countryId).subscribe(data => {
+        this.country = data;
+      });
+    }
   }
 }
