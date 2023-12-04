@@ -1,12 +1,12 @@
 <div style="display: flex; justify-content: center; align-items: center; height: 100%;">
-  <mat-card style="display: inline-flex; justify-content: center; align-items: center;">
+  <mat-card style="display: inline-flex; justify-content: center; align-items: center; max-width: 300px;">
     <mat-card-title class="text-center" style="margin: 10px;">Please log in</mat-card-title>
     <mat-card-content>
       <form class="form-group" style="display: flex; flex-direction: column;">
-        <mat-error *ngIf='invalidLogin'>{{errorMessage}}</mat-error>
+        <mat-error *ngIf='invalidLogin' style="word-wrap: break-word;">{{errorMessage}}</mat-error>
         <mat-hint *ngIf='loginSuccess'>{{successMessage}}</mat-hint>
         <mat-form-field class="form-group">
-          <mat-label>User Name :</mat-label>
+          <mat-label>User Name:</mat-label>
           <input matInput type="text" id="username" [(ngModel)]="username" placeholder="Enter User Name"
             name="username">
         </mat-form-field>

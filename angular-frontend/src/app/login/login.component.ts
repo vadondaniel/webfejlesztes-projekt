@@ -11,7 +11,7 @@ export class LoginComponent implements OnInit {
 
     username: string | undefined;
     password: string | undefined;
-    errorMessage = 'Invalid Credentials';
+    errorMessage = '';
     successMessage: string | undefined;
     invalidLogin = false;
     loginSuccess = false;
@@ -30,9 +30,15 @@ export class LoginComponent implements OnInit {
             this.loginSuccess = true;
             this.successMessage = 'Login Successful.';
             this.router.navigate(['/countries']);
-        }, () => {
-            this.invalidLogin = true;
+        }, (error) => {
             this.loginSuccess = false;
+            if (error.status === 401) {
+                this.invalidLogin = true;
+                this.errorMessage = 'Invalid Credentials';
+            } else {
+                this.invalidLogin = true;
+                this.errorMessage = 'Could not connect to the server';
+            }
         });
     }
 }
