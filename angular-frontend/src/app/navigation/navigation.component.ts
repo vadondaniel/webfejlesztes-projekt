@@ -4,34 +4,39 @@ import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { AuthenticationService } from '../services/auth.service';
+import { Title } from '@angular/platform-browser';
 
 @Component({
-  selector: 'app-navigation',
-  templateUrl: './navigation.component.html',
-  styleUrls: ['./navigation.component.css']
+    selector: 'app-navigation',
+    templateUrl: './navigation.component.html',
+    styleUrls: ['./navigation.component.css']
 })
 export class NavigationComponent {
-  private breakpointObserver = inject(BreakpointObserver);
+    private breakpointObserver = inject(BreakpointObserver);
 
-  isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
-    .pipe(
-      map(result => result.matches),
-      shareReplay()
-    );
+    isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
+        .pipe(
+            map(result => result.matches),
+            shareReplay()
+        );
 
-  constructor(private router: Router, public authenticationService: AuthenticationService) { }
+    constructor(
+        private router: Router,
+        public authenticationService: AuthenticationService,
+        private titleService: Title) { }
 
-  getNavigationText(): string {
-    if (this.router.url.startsWith('/countries/') && this.router.url.split('/').length > 2) {
-      return 'Country Details';
-    } else if (this.router.url.startsWith('/cities/') && this.router.url.split('/').length > 2) {
-      return 'City Details';
-    } else if (this.router.url.includes('countries')) {
-      return 'Countries';
-    } else if (this.router.url.includes('cities')) {
-      return 'Cities';
-    } else {
-      return 'Home';
+    getNavigationText(): string {
+        let title = 'Home';
+        if (this.router.url.startsWith('/countries/') && this.router.url.split('/').length > 2) {
+            title = 'Country Details';
+        } else if (this.router.url.startsWith('/cities/') && this.router.url.split('/').length > 2) {
+            title = 'City Details';
+        } else if (this.router.url.includes('countries')) {
+            title = 'Countries';
+        } else if (this.router.url.includes('cities')) {
+            title = 'Cities';
+        }
+        this.titleService.setTitle(title);
+        return title;
     }
-  }
 }
