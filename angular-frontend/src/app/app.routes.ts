@@ -5,7 +5,7 @@ import { CountryDetailsComponent } from './country-details/country-details.compo
 import { CityListComponent } from './city-list/city-list.component';
 import { CityDetailsComponent } from './city-details/city-details.component';
 import { LoginComponent } from './login/login.component';
-import { AuthGuard } from './auth-guard';
+import { AuthGuard } from './auth.guard';
 
 export const routes: Routes = [
     { path: 'countries', component: CountryListComponent, canActivate: [AuthGuard] },
