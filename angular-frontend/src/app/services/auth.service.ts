@@ -1,4 +1,3 @@
-import { UniqueSelectionDispatcher } from '@angular/cdk/collections';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
@@ -17,11 +16,11 @@ export class AuthenticationService {
     constructor(private http: HttpClient) {
         this.username = sessionStorage.getItem(this.USER_NAME_SESSION_ATTRIBUTE_NAME);
         this.password = sessionStorage.getItem('password'); // Assuming you also store the password in sessionStorage
-      }
+    }
 
     authenticationService(username: string, password: string) {
         return this.http.get(`http://localhost:8080/api/basicauth`,
-            { headers: { authorization: this.createBasicAuthToken(username, password) } }).pipe(map((res) => {
+            { headers: { authorization: this.createBasicAuthToken(username, password) } }).pipe(map((_) => {
                 this.username = username;
                 this.password = password;
                 this.registerSuccessfulLogin(username, password);
