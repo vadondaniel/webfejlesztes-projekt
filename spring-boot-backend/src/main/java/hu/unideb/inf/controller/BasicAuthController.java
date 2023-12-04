@@ -9,11 +9,11 @@ import hu.unideb.inf.bean.AuthenticationBean;
 
 @CrossOrigin(origins="http://localhost:4200")
 @RestController
-@RequestMapping("/api/v1")
+@RequestMapping("/api")
 public class BasicAuthController {
 
 	@GetMapping(path = "/basicauth")
-	public AuthenticationBean helloWorldBean() {
+	public AuthenticationBean authenticationBean() {
 		return new AuthenticationBean("You are authenticated");
 	}	
 }

@@ -35,7 +35,7 @@ The frontend application will be running at `http://localhost:4200`.
 
 ### API Endpoints
 
-- `/api/v1/basicauth`: Endpoint for basic authentication.
+- `/api/basicauth`: Endpoint for basic authentication.
 - `/api/countries`: GET request to retrieve all countries.
 - `/api/countries`: POST request to add a new country.
 - `/api/countries/{id}`: GET request to retrieve a country by its ID.
