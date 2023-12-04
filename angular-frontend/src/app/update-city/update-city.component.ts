@@ -62,8 +62,8 @@ export class UpdateCityComponent implements OnInit {
     this.countryService.getCountries().subscribe(data => {
       this.countries = data.sort((a, b) => a.name.localeCompare(b.name));
       this.filteredOptions = this.countries.map(country => country.name);
+      this.loadCity();
     });
-    this.loadCity();
   }
 
   loadCity(): void {
