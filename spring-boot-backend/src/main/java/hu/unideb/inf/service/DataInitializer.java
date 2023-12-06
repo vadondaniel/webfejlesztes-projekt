@@ -20,9 +20,14 @@ public class DataInitializer implements CommandLineRunner {
     @Autowired
     private CityRepository cityRepository;
 
+    @Autowired
+    private UserService userService;
+
     @Override
     @Transactional
     public void run(String... args) throws Exception {
+        userService.createUser("testuser", "testpassword");
+
         Country country1 = createAndSaveCountry("Japan", 126_000_000L, Continent.Asia);
         Country country2 = createAndSaveCountry("Hungary", 9_000_000L, Continent.Europe);
         Country country3 = createAndSaveCountry("USA", 328_000_000L, Continent.NorthAmerica);
