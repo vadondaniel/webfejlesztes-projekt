@@ -29,7 +29,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 				.anyRequest().authenticated()
 				.and()
 				.formLogin() // Enable form login
-				.loginProcessingUrl("/login") // Specify the login URL
+				.loginProcessingUrl("/api/basicauth") // Specify the login URL
 				.permitAll()
 				.and()
 				.httpBasic(); // Enable basic authentication

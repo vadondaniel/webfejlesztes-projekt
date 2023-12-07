@@ -34,15 +34,10 @@ export class LoginComponent implements OnInit {
                 this.successMessage = 'Login Successful.';
                 this.router.navigate(['/countries']);
             },
-            error: (error) => {
+            error: () => {
                 this.loginSuccess = false;
-                if (error.status === 401) {
-                    this.invalidLogin = true;
-                    this.errorMessage = 'Invalid Credentials';
-                } else {
-                    this.invalidLogin = true;
-                    this.errorMessage = 'Could not connect to the server';
-                }
+                this.invalidLogin = true;
+                this.errorMessage = 'Authentication Failed.';
             }
         });
     }
