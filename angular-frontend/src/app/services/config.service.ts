@@ -4,5 +4,5 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class ConfigService {
-  basePath = 'http://localhost:8080/api'; // <-- Change this line
+  basePath = 'http://localhost:8080/api'; // <-- Change this line https://hb54wkv8-8080.euw.devtunnels.ms/api
 }

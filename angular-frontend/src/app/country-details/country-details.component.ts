@@ -11,7 +11,7 @@ import { Sort } from '@angular/material/sort';
   styleUrls: ['./country-details.component.css']
 })
 export class CountryDetailsComponent implements OnInit {
-  country!: Country;
+  country!: Country | null;
   sort: Sort = { active: 'id', direction: 'asc' };
   sortedCities: City[] = [];
   loaded = false;
@@ -21,7 +21,7 @@ export class CountryDetailsComponent implements OnInit {
     private route: ActivatedRoute,
     private reloadListService: ReloadListService) {
     this.reloadListService.triggerLoadCountryDetails$.subscribe(() => {
-      this.loadCountryDetails(this.country.id);
+      this.loadCountryDetails(this.country!.id);
     });
   }
 
@@ -46,11 +46,11 @@ export class CountryDetailsComponent implements OnInit {
   }
 
   sortData(sort: Sort) {
-    if (!this.country.cities) {
+    if (!this.country!.cities) {
       return;
     }
 
-    const data = this.country.cities.slice();
+    const data = this.country!.cities.slice();
     if (!sort.active || sort.direction === '') {
       this.sortedCities = data;
       return;

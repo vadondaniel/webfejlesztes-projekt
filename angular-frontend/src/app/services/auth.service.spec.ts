@@ -20,7 +20,7 @@ describe('AuthenticationService', () => {
   });
 
   afterEach(() => {
-    httpMock.verify(); // Ensure that there are no outstanding requests
+    httpMock.verify();
   });
 
   it('should be created', () => {
@@ -34,7 +34,7 @@ describe('AuthenticationService', () => {
 
     const request = httpMock.expectOne(`${configService.basePath}/basicauth`);
     expect(request.request.method).toBe('GET');
-    request.flush(null); // flush with null to emit undefined
+    request.flush(null);
   });
 
   it('should register successful login', () => {

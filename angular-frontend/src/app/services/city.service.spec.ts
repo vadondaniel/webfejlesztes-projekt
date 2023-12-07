@@ -21,7 +21,7 @@ describe('CityService', () => {
   });
 
   afterEach(() => {
-    httpMock.verify(); // Ensure that there are no outstanding requests
+    httpMock.verify();
   });
 
   it('should be created', () => {
@@ -87,6 +87,6 @@ describe('CityService', () => {
 
     const request = httpMock.expectOne(`${configService.basePath}/cities/1`);
     expect(request.request.method).toBe('DELETE');
-    request.flush(null); // flush with null to emit null
+    request.flush(null);
   });
 });

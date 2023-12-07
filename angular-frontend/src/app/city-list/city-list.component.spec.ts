@@ -18,7 +18,7 @@ describe('CityListComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [CityListComponent],
-      imports: [HttpClientTestingModule, MatProgressSpinnerModule], // add MatProgressSpinnerModule here
+      imports: [HttpClientTestingModule, MatProgressSpinnerModule],
       providers: [CityService, ReloadListService]
     })
       .compileComponents();

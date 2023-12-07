@@ -14,6 +14,6 @@ describe('ConfigService', () => {
   });
 
   it('should have correct basePath', () => {
-    expect(service.basePath).toBe('https://hb54wkv8-8080.euw.devtunnels.ms/api');
+    expect(service.basePath).toBe('http://localhost:8080/api');
   });
 });
