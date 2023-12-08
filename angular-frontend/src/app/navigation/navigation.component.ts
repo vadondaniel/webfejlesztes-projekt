@@ -32,9 +32,9 @@ export class NavigationComponent {
         } else if (this.router.url.startsWith('/cities/') && this.router.url.split('/').length > 2) {
             title = 'City Details';
         } else if (this.router.url.includes('countries')) {
-            title = 'Countries';
+            title = 'List of Countries';
         } else if (this.router.url.includes('cities')) {
-            title = 'Cities';
+            title = 'List of Cities';
         }
         this.titleService.setTitle(title);
         return title;
