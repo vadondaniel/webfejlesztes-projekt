@@ -21,3 +21,24 @@
   margin-right: 20px;
   margin-top: 20px;
 }
+
+::ng-deep .mat-mdc-list-item {
+  --mdc-list-list-item-focus-state-layer-color: none;
+  --mdc-list-list-item-focus-state-layer-opacity: 0;
+  --mdc-list-list-item-hover-state-layer-color: none;
+  --mdc-list-list-item-hover-state-layer-opacity: 0;
+}
+
+.active-link {
+  background-color: #666666;
+  pointer-events: none;
+  cursor: default;
+}
+
+.nav-link:hover {
+  background-color: #505050;
+}
+
+.active-link:hover {
+  background-color: #666666;
+}
