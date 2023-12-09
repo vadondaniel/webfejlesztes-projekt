@@ -4,7 +4,7 @@ Webfejlesztés (INBPM0522) 2023. ősz SzM
 
 ## Spring Boot Database Server with Authentication and Angular Frontend
 
-This is a Spring Boot application that uses Maven as a build tool, H2 as an in-memory database, and Spring Security for authentication. It also includes an Angular frontend for user interaction.
+This is a Spring Boot application that uses Maven as a build tool, H2 as a database, and Spring Security for authentication. It also includes an Angular frontend for user interaction.
 
 ### Prerequisites
 
